@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cc8356f45d1a24cbdf24d1a9e6899e, type: 3}
+  m_Name: EmptyPUG
+  m_EditorClassIdentifier: 
+  <HealthBonus>k__BackingField: 0
+  <DefenseBonus>k__BackingField: 0
+  <DamageReductionBonus>k__BackingField: 0
+  <HealthRegenBonus>k__BackingField: 0
+  <DamageBonus>k__BackingField: 0
+  <PenetrationBonus>k__BackingField: 0
+  <DamageIncreaseBonus>k__BackingField: 0
+  <AttackRangeBonus>k__BackingField: 0
+  <AttackSpeedBonus>k__BackingField: 0
+  <SpeedBonus>k__BackingField: 0
+  <TravelRangeBonus>k__BackingField: 0
+  <CostBonus>k__BackingField: 0
+  <MinionAmountBonus>k__BackingField: 0
+  <MinionCooldownBonus>k__BackingField: 0
