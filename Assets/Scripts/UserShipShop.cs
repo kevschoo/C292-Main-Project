@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserTowerShop : MonoBehaviour
+public class UserShipShop : MonoBehaviour
 {
 
-
-    //listens for invoke(gameobject tower)
-    //enables ui for tower shop and editing
+    //listens for invoke(gameobject shipobject)
+    //enables ui for ship shop or viewing
 
     // Start is called before the first frame update
     void Start()

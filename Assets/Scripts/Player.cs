@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] bool FreeCam = false;
     [SerializeField] bool InMenu = false;
 
-
+    //listens for invoke(pause)
+    //calls menu closing stuff
 
     void Start()
     {

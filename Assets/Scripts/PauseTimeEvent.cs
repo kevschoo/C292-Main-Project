@@ -10,8 +10,7 @@ public class PauseTimeEvent : MonoBehaviour
 
     void Start()
     {
-        //Add a listener to the new Event. Calls MyAction method when invoked
-        GamePaused.AddListener(MyAction);
+
     }
 
 
@@ -20,9 +19,4 @@ public class PauseTimeEvent : MonoBehaviour
 
     }
 
-    void MyAction()
-    {
-        //Output message to the console
-        Debug.Log("Do Stuff");
-    }
 }

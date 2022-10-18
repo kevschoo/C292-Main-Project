@@ -113,7 +113,8 @@ public class ShipNavMeshAI : MonoBehaviour
 
                 InCombat = true;
 
-                FaceTarget(Agent.path.corners[0]);
+                
+                FaceTarget(Target.transform.position);
                 float dist =  Vector2.Distance(this.gameObject.transform.position, Target.transform.position);
                 if (distfromhome > this.spaceObject.speedStats._TravelRange)
                 {

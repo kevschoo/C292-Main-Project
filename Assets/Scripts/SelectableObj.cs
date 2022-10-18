@@ -25,6 +25,7 @@ public class SelectableObj : MonoBehaviour
     private void OnMouseOver()
     {
         IsMouseOver = true;
+        //call event hoverUI(gameobject) 
     }
 
     private void OnMouseDown()
@@ -32,12 +33,13 @@ public class SelectableObj : MonoBehaviour
        if (IsMouseOver == true)
         {
             Debug.Log(this.gameObject.name);
-            
+            //call event(gameobject)
         }
     }
 
     private void OnMouseExit()
     {
         IsMouseOver = false;
+        //call event closeHoverUi()
     }
 }

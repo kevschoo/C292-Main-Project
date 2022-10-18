@@ -4,30 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ObjectSelectionEvent : MonoBehaviour
+public class ObjectSelectionEvent : EventArgs
 {
-    public static event Action OnObjectSelected;
+    public GameObject SelectedObj;
 
-    void Start()
+    public ObjectSelectionEvent(GameObject SelectedObject)
     {
-        //Add a listener to the new Event. Calls MyAction method when invoked
-        //ObjectSelected.AddListener(MyAction);
+        SelectedObj = SelectedObject;
     }
 
-    private void OnMouseDown()
-    {
-        Debug.Log("Event Clicked");
-        OnObjectSelected?.Invoke();
-    }
+    //invoke(gameobject)
+    //if x type > call event
+    
 
-    void Update()
-    {
-        
-    }
 
-    void MyAction()
-    {
-        //Output message to the console
-        Debug.Log("Do Stuff");
-    }
 }
