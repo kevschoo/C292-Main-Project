@@ -2,76 +2,78 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+
+
 [DisallowMultipleComponent]
 public class Player : MonoBehaviour
 {
     [SerializeField] PermUpgrades PlayersPermUpgrade;
-    [SerializeField] List<GameObject> PlayerOwnedObjects = new List<GameObject>();
-    [SerializeField] Camera mainCam;
-    [SerializeField] GameObject selectedObject;
+
+    [SerializeField] List<SpaceObject> PlayerOwnedObjects = new List<SpaceObject>();
+    [SerializeField] Camera MainCam;
+    [SerializeField] GameObject SelectedObject;
     [SerializeField] int index = 0;
+    [SerializeField] bool FreeCam = false;
+    [SerializeField] bool InMenu = false;
 
-    private PlayerControls playerControls;
-    private void Awake()
-    {
-        playerControls = new PlayerControls();
 
-    }
-    private void OnEnable()
-    {
-        playerControls.Enable();
-    }
 
-    private void OnDisable()
-    {
-        playerControls.Disable();
-    }
     void Start()
     {
-        if(PlayerOwnedObjects.Count > 0)
+        if (PlayerOwnedObjects.Count > 0)
         {
-            selectedObject = PlayerOwnedObjects[0];
+            SelectedObject = PlayerOwnedObjects[0].gameObject;
+            SetAllOwnedObjects();
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        float leftclick = playerControls.BaseControls.RightClick.ReadValue<float>();
-        if (leftclick > .5f)
+        if (Input.GetMouseButtonDown(0))
         {
-            ChangeSelectedObject(1);
-        }
-        if(selectedObject != null)
-        {
-            mainCam.transform.position = selectedObject.transform.position;
-        }
-    }
-
-
-    void ChangeSelectedObject(int x)
-    {
-        Debug.Log("Changing Selected Obj");
-        if (PlayerOwnedObjects.Count == 0 || PlayerOwnedObjects.Count == 1)
-        {
-            return;
-        }
-        if (PlayerOwnedObjects.Count > 1)
-        {
-            index++;
-            if(index > PlayerOwnedObjects.Count-1)
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 100.0f))
             {
-                index = 0;
+                //MainCam.transform.position = new Vector3(hit.point.x, hit.point.y, MainCam.transform.position.z);
+                Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
             }
-                selectedObject.GetComponent<PlayerShipAi>().enabled = false;
-                selectedObject.GetComponent<NavMeshAgent>().enabled = false;
-                
-                selectedObject = PlayerOwnedObjects[index];
-                selectedObject.GetComponent<NavMeshAgent>().enabled = true;
-                selectedObject.GetComponent<PlayerShipAi>().enabled = true;
-            
-            
+        }
+
+        if (Input.GetButtonDown("Escape"))
+        {
+            if (InMenu == true)
+            {
+                InMenu = false;
+                GameTime.Resume();
+            }
+            else
+            {
+                InMenu = true;
+                GameTime.Pause();
+            }
+        }
+
+
+    }
+
+    void SetAllOwnedObjects()
+    {
+        foreach (SpaceObject obj in this.PlayerOwnedObjects)
+        {
+            obj.SetOwner(this);
         }
     }
+    void SetObjectsOwner(SpaceObject obj)
+    {
+        obj.SetOwner(this);
+    }
+
+
+
+
+
 }

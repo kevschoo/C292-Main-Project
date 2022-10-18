@@ -123,88 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &29359195
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 29359196}
-  - component: {fileID: 29359197}
-  m_Layer: 0
-  m_Name: playerShip1_blue
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &29359196
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29359195}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1063778145}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &29359197
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29359195}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 654d927b89210d948b418cd5280ebe59, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.99, y: 0.75}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &156937453
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,12 +222,12 @@ MonoBehaviour:
   <_BaseDamage>k__BackingField: 25
   <_BasePenetration>k__BackingField: 5
   <_BaseDamageIncrease>k__BackingField: 0
-  <_BaseAttackRange>k__BackingField: 5
+  <_BaseAttackRange>k__BackingField: 1
   <_BaseAttackSpeed>k__BackingField: 1
   <_Damage>k__BackingField: 0
   <_Penetration>k__BackingField: 0
   <_DamageIncrease>k__BackingField: 0
-  <_AttackRange>k__BackingField: 0
+  <_AttackRange>k__BackingField: 1
   <_AttackSpeed>k__BackingField: 0
 --- !u!114 &156937458
 MonoBehaviour:
@@ -388,16 +306,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a12d461e765d2146a650464cac53d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  permUpgrades: {fileID: 11400000, guid: dfae209c707e4fe49b73922a1931e87e, type: 2}
-  offensiveStats: {fileID: 0}
-  defensiveStats: {fileID: 0}
-  minionStats: {fileID: 0}
-  speedStats: {fileID: 0}
-  costStats: {fileID: 0}
-  upgradeSlots: {fileID: 0}
-  statusEffectManager: {fileID: 0}
-  Team: 
-  Owner: {fileID: 0}
+  <permUpgrades>k__BackingField: {fileID: 0}
+  <offensiveStats>k__BackingField: {fileID: 0}
+  <defensiveStats>k__BackingField: {fileID: 0}
+  <minionStats>k__BackingField: {fileID: 0}
+  <speedStats>k__BackingField: {fileID: 0}
+  <costStats>k__BackingField: {fileID: 0}
+  <upgradeSlots>k__BackingField: {fileID: 0}
+  <statusEffectManager>k__BackingField: {fileID: 0}
+  <Team>k__BackingField: 
+  <Owner>k__BackingField: {fileID: 0}
   HealthSpawnMod: 1
   isInvincible: 0
   canDie: 1
@@ -410,7 +328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156937453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1, y: 0, z: 0}
+  m_LocalPosition: {x: 8.91, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 362326785}
@@ -430,7 +348,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 702047903}
-  RotationSpeed: 15
+  HomeBase: {fileID: 0}
+  IsAtHome: 0
+  MaxDistanceFromHome: 0.1
+  AttackAtPercentOfRange: 0.9
+  AccelMod: 0.33
+  SpeedMod: 0.66
+  InCombat: 0
+  AiIsEnabled: 1
+  WeaponParts: []
+  DefenseParts: []
+  WeaponsActive: 0
+  DefensesActive: 0
+  rotateDir: 1
+  rotateCRRunning: 0
+  <BulletType>k__BackingField: {fileID: 2057194692660968274, guid: 3aa843afc47e6f842b8436051f279f73, type: 3}
 --- !u!195 &156937464
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -477,13 +409,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362326784}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 156937462}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
 --- !u!212 &362326786
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -523,337 +455,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 654d927b89210d948b418cd5280ebe59, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.99, y: 0.75}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!1 &433032701
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 433032712}
-  - component: {fileID: 433032711}
-  - component: {fileID: 433032710}
-  - component: {fileID: 433032709}
-  - component: {fileID: 433032708}
-  - component: {fileID: 433032707}
-  - component: {fileID: 433032706}
-  - component: {fileID: 433032705}
-  - component: {fileID: 433032704}
-  - component: {fileID: 433032703}
-  - component: {fileID: 433032702}
-  m_Layer: 0
-  m_Name: SpaceShip (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &433032702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433032701}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3714dceea7a9dab44b457490f2acfe3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 702047903}
-  RotationSpeed: 15
---- !u!195 &433032703
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433032701}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.25
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.5
-  m_BaseOffset: 0.25
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &433032704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433032701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bcc45b67ec92114d8707b029f450204, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <_BaseMaxMinionAmount>k__BackingField: 0
-  <_BaseMinionCooldown>k__BackingField: 10
-  <_MaxMinionAmount>k__BackingField: 0
-  <_CurMinionAmount>k__BackingField: 0
-  <_MinionCooldown>k__BackingField: 0
-  <_CanSpawnMinions>k__BackingField: 0
-  <Minions>k__BackingField: []
---- !u!114 &433032705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433032701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b020588fb354d3d4f8d8bff94ecf6f8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <_BaseCost>k__BackingField: 100
-  <_Cost>k__BackingField: 0
-  <_BaseUpkeep>k__BackingField: 10
-  <_Upkeep>k__BackingField: 0
-  <_HasUpkeepCosts>k__BackingField: 0
-  <_UpKeepCooldown>k__BackingField: 60
---- !u!114 &433032706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433032701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d6df8bc2e946e7438b06b7113641c7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <_BaseMaxHealth>k__BackingField: 50
-  <_BaseDefense>k__BackingField: 5
-  <_BaseDamageReduction>k__BackingField: 0
-  <_BaseHealthRegen>k__BackingField: 2
-  <_MaxHealth>k__BackingField: 0
-  <_CurrentHealth>k__BackingField: 0
-  <_Defense>k__BackingField: 0
-  <_DamageReduction>k__BackingField: 0
-  <_HealthRegen>k__BackingField: 0
---- !u!114 &433032707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433032701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 273dd046c871a66458d06fe47e396885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <_BaseDamage>k__BackingField: 25
-  <_BasePenetration>k__BackingField: 5
-  <_BaseDamageIncrease>k__BackingField: 0
-  <_BaseAttackRange>k__BackingField: 5
-  <_BaseAttackSpeed>k__BackingField: 1
-  <_Damage>k__BackingField: 0
-  <_Penetration>k__BackingField: 0
-  <_DamageIncrease>k__BackingField: 0
-  <_AttackRange>k__BackingField: 0
-  <_AttackSpeed>k__BackingField: 0
---- !u!114 &433032708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433032701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5ff392da15d0043a3e7b4e0c134e7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <_BaseSpeed>k__BackingField: 5
-  <_BaseTravelRange>k__BackingField: 10
-  <_Speed>k__BackingField: 0
-  <_TravelRange>k__BackingField: 0
-  <_CanMove>k__BackingField: 1
---- !u!114 &433032709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433032701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d185eb1b86ed2646aeef147b0b018d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <IsImmuneToEffects>k__BackingField: 0
-  CurrentEffects: []
-  ImmuneToEffects: []
-  CurrentEffectType: []
---- !u!114 &433032710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433032701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2266699f6cecae14184bc37307c7df79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxShipParts: 1
-  CurShipParts: 0
-  ChosenParts:
-  - {fileID: 11400000, guid: 22023a6efe4b6f743814a965ba66ed9f, type: 2}
-  IllegalParts: []
-  UniqueParts: []
-  <HealthBonus>k__BackingField: 0
-  <DefenseBonus>k__BackingField: 0
-  <DamageReductionBonus>k__BackingField: 0
-  <HealthRegenBonus>k__BackingField: 0
-  <DamageBonus>k__BackingField: 0
-  <PenetrationBonus>k__BackingField: 0
-  <DamageIncreaseBonus>k__BackingField: 0
-  <AttackRangeBonus>k__BackingField: 0
-  <AttackSpeedBonus>k__BackingField: 0
-  <SpeedBonus>k__BackingField: 0
-  <TravelRangeBonus>k__BackingField: 0
-  <CostBonus>k__BackingField: 0
-  <MinionAmountBonus>k__BackingField: 0
-  <MinionCooldownBonus>k__BackingField: 0
---- !u!114 &433032711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433032701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a12d461e765d2146a650464cac53d2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  permUpgrades: {fileID: 11400000, guid: dfae209c707e4fe49b73922a1931e87e, type: 2}
-  offensiveStats: {fileID: 0}
-  defensiveStats: {fileID: 0}
-  minionStats: {fileID: 0}
-  speedStats: {fileID: 0}
-  costStats: {fileID: 0}
-  upgradeSlots: {fileID: 0}
-  statusEffectManager: {fileID: 0}
-  Team: 
-  Owner: {fileID: 0}
-  HealthSpawnMod: 1
-  isInvincible: 0
-  canDie: 1
-  canDieAtZero: 1
---- !u!4 &433032712
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433032701}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09, y: 2.64, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1292277414}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &496294773
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 496294774}
-  - component: {fileID: 496294775}
-  m_Layer: 0
-  m_Name: playerShip1_blue
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &496294774
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496294773}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 543968751}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &496294775
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496294773}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 654d927b89210d948b418cd5280ebe59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -906,13 +508,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayersPermUpgrade: {fileID: 0}
   PlayerOwnedObjects:
-  - {fileID: 156937453}
-  - {fileID: 543968740}
-  - {fileID: 1063778134}
-  - {fileID: 433032701}
-  mainCam: {fileID: 519420031}
-  selectedObject: {fileID: 0}
+  - {fileID: 156937461}
+  MainCam: {fileID: 0}
+  SelectedObject: {fileID: 0}
   index: 0
+  FreeCam: 0
+  InMenu: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -964,259 +565,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &543968740
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 543968751}
-  - component: {fileID: 543968750}
-  - component: {fileID: 543968749}
-  - component: {fileID: 543968748}
-  - component: {fileID: 543968747}
-  - component: {fileID: 543968746}
-  - component: {fileID: 543968745}
-  - component: {fileID: 543968744}
-  - component: {fileID: 543968743}
-  - component: {fileID: 543968742}
-  - component: {fileID: 543968741}
-  m_Layer: 0
-  m_Name: SpaceShip (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &543968741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543968740}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3714dceea7a9dab44b457490f2acfe3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 702047903}
-  RotationSpeed: 15
---- !u!195 &543968742
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543968740}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.25
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.5
-  m_BaseOffset: 0.25
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &543968743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543968740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bcc45b67ec92114d8707b029f450204, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <_BaseMaxMinionAmount>k__BackingField: 0
-  <_BaseMinionCooldown>k__BackingField: 10
-  <_MaxMinionAmount>k__BackingField: 0
-  <_CurMinionAmount>k__BackingField: 0
-  <_MinionCooldown>k__BackingField: 0
-  <_CanSpawnMinions>k__BackingField: 0
-  <Minions>k__BackingField: []
---- !u!114 &543968744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543968740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b020588fb354d3d4f8d8bff94ecf6f8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <_BaseCost>k__BackingField: 100
-  <_Cost>k__BackingField: 0
-  <_BaseUpkeep>k__BackingField: 10
-  <_Upkeep>k__BackingField: 0
-  <_HasUpkeepCosts>k__BackingField: 0
-  <_UpKeepCooldown>k__BackingField: 60
---- !u!114 &543968745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543968740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d6df8bc2e946e7438b06b7113641c7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <_BaseMaxHealth>k__BackingField: 50
-  <_BaseDefense>k__BackingField: 5
-  <_BaseDamageReduction>k__BackingField: 0
-  <_BaseHealthRegen>k__BackingField: 2
-  <_MaxHealth>k__BackingField: 0
-  <_CurrentHealth>k__BackingField: 0
-  <_Defense>k__BackingField: 0
-  <_DamageReduction>k__BackingField: 0
-  <_HealthRegen>k__BackingField: 0
---- !u!114 &543968746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543968740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 273dd046c871a66458d06fe47e396885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <_BaseDamage>k__BackingField: 25
-  <_BasePenetration>k__BackingField: 5
-  <_BaseDamageIncrease>k__BackingField: 0
-  <_BaseAttackRange>k__BackingField: 5
-  <_BaseAttackSpeed>k__BackingField: 1
-  <_Damage>k__BackingField: 0
-  <_Penetration>k__BackingField: 0
-  <_DamageIncrease>k__BackingField: 0
-  <_AttackRange>k__BackingField: 0
-  <_AttackSpeed>k__BackingField: 0
---- !u!114 &543968747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543968740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5ff392da15d0043a3e7b4e0c134e7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <_BaseSpeed>k__BackingField: 5
-  <_BaseTravelRange>k__BackingField: 10
-  <_Speed>k__BackingField: 0
-  <_TravelRange>k__BackingField: 0
-  <_CanMove>k__BackingField: 1
---- !u!114 &543968748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543968740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d185eb1b86ed2646aeef147b0b018d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <IsImmuneToEffects>k__BackingField: 0
-  CurrentEffects: []
-  ImmuneToEffects: []
-  CurrentEffectType: []
---- !u!114 &543968749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543968740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2266699f6cecae14184bc37307c7df79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxShipParts: 1
-  CurShipParts: 0
-  ChosenParts:
-  - {fileID: 11400000, guid: 22023a6efe4b6f743814a965ba66ed9f, type: 2}
-  IllegalParts: []
-  UniqueParts: []
-  <HealthBonus>k__BackingField: 0
-  <DefenseBonus>k__BackingField: 0
-  <DamageReductionBonus>k__BackingField: 0
-  <HealthRegenBonus>k__BackingField: 0
-  <DamageBonus>k__BackingField: 0
-  <PenetrationBonus>k__BackingField: 0
-  <DamageIncreaseBonus>k__BackingField: 0
-  <AttackRangeBonus>k__BackingField: 0
-  <AttackSpeedBonus>k__BackingField: 0
-  <SpeedBonus>k__BackingField: 0
-  <TravelRangeBonus>k__BackingField: 0
-  <CostBonus>k__BackingField: 0
-  <MinionAmountBonus>k__BackingField: 0
-  <MinionCooldownBonus>k__BackingField: 0
---- !u!114 &543968750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543968740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a12d461e765d2146a650464cac53d2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  permUpgrades: {fileID: 11400000, guid: dfae209c707e4fe49b73922a1931e87e, type: 2}
-  offensiveStats: {fileID: 0}
-  defensiveStats: {fileID: 0}
-  minionStats: {fileID: 0}
-  speedStats: {fileID: 0}
-  costStats: {fileID: 0}
-  upgradeSlots: {fileID: 0}
-  statusEffectManager: {fileID: 0}
-  Team: 
-  Owner: {fileID: 0}
-  HealthSpawnMod: 1
-  isInvincible: 0
-  canDie: 1
-  canDieAtZero: 1
---- !u!4 &543968751
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543968740}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.04, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 496294774}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654010606
 GameObject:
@@ -1245,11 +598,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654010606}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2022074674}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &654010608
 MonoBehaviour:
@@ -1306,7 +659,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -17211,13 +16564,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702047903}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.16, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1363471261}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1063778134
+--- !u!1 &1346564185
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17225,247 +16579,127 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1063778145}
-  - component: {fileID: 1063778144}
-  - component: {fileID: 1063778143}
-  - component: {fileID: 1063778142}
-  - component: {fileID: 1063778141}
-  - component: {fileID: 1063778140}
-  - component: {fileID: 1063778139}
-  - component: {fileID: 1063778138}
-  - component: {fileID: 1063778137}
-  - component: {fileID: 1063778136}
-  - component: {fileID: 1063778135}
-  m_Layer: 0
-  m_Name: SpaceShip (2)
+  - component: {fileID: 1346564191}
+  - component: {fileID: 1346564190}
+  - component: {fileID: 1346564189}
+  - component: {fileID: 1346564188}
+  - component: {fileID: 1346564187}
+  - component: {fileID: 1346564186}
+  m_Layer: 5
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1063778135
+--- !u!114 &1346564186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063778134}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3714dceea7a9dab44b457490f2acfe3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 702047903}
-  RotationSpeed: 15
---- !u!195 &1063778136
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063778134}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.25
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.5
-  m_BaseOffset: 0.25
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &1063778137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063778134}
+  m_GameObject: {fileID: 1346564185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bcc45b67ec92114d8707b029f450204, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <_BaseMaxMinionAmount>k__BackingField: 0
-  <_BaseMinionCooldown>k__BackingField: 10
-  <_MaxMinionAmount>k__BackingField: 0
-  <_CurMinionAmount>k__BackingField: 0
-  <_MinionCooldown>k__BackingField: 0
-  <_CanSpawnMinions>k__BackingField: 0
-  <Minions>k__BackingField: []
---- !u!114 &1063778138
+--- !u!114 &1346564187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063778134}
+  m_GameObject: {fileID: 1346564185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b020588fb354d3d4f8d8bff94ecf6f8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <_BaseCost>k__BackingField: 100
-  <_Cost>k__BackingField: 0
-  <_BaseUpkeep>k__BackingField: 10
-  <_Upkeep>k__BackingField: 0
-  <_HasUpkeepCosts>k__BackingField: 0
-  <_UpKeepCooldown>k__BackingField: 60
---- !u!114 &1063778139
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &1346564188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063778134}
+  m_GameObject: {fileID: 1346564185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d6df8bc2e946e7438b06b7113641c7a, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <_BaseMaxHealth>k__BackingField: 50
-  <_BaseDefense>k__BackingField: 5
-  <_BaseDamageReduction>k__BackingField: 0
-  <_BaseHealthRegen>k__BackingField: 2
-  <_MaxHealth>k__BackingField: 0
-  <_CurrentHealth>k__BackingField: 0
-  <_Defense>k__BackingField: 0
-  <_DamageReduction>k__BackingField: 0
-  <_HealthRegen>k__BackingField: 0
---- !u!114 &1063778140
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1346564189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063778134}
+  m_GameObject: {fileID: 1346564185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 273dd046c871a66458d06fe47e396885, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <_BaseDamage>k__BackingField: 25
-  <_BasePenetration>k__BackingField: 5
-  <_BaseDamageIncrease>k__BackingField: 0
-  <_BaseAttackRange>k__BackingField: 5
-  <_BaseAttackSpeed>k__BackingField: 1
-  <_Damage>k__BackingField: 0
-  <_Penetration>k__BackingField: 0
-  <_DamageIncrease>k__BackingField: 0
-  <_AttackRange>k__BackingField: 0
-  <_AttackSpeed>k__BackingField: 0
---- !u!114 &1063778141
-MonoBehaviour:
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1346564190
+Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063778134}
+  m_GameObject: {fileID: 1346564185}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5ff392da15d0043a3e7b4e0c134e7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <_BaseSpeed>k__BackingField: 5
-  <_BaseTravelRange>k__BackingField: 10
-  <_Speed>k__BackingField: 0
-  <_TravelRange>k__BackingField: 0
-  <_CanMove>k__BackingField: 1
---- !u!114 &1063778142
-MonoBehaviour:
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1346564191
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063778134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d185eb1b86ed2646aeef147b0b018d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <IsImmuneToEffects>k__BackingField: 0
-  CurrentEffects: []
-  ImmuneToEffects: []
-  CurrentEffectType: []
---- !u!114 &1063778143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063778134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2266699f6cecae14184bc37307c7df79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxShipParts: 1
-  CurShipParts: 0
-  ChosenParts:
-  - {fileID: 11400000, guid: 22023a6efe4b6f743814a965ba66ed9f, type: 2}
-  IllegalParts: []
-  UniqueParts: []
-  <HealthBonus>k__BackingField: 0
-  <DefenseBonus>k__BackingField: 0
-  <DamageReductionBonus>k__BackingField: 0
-  <HealthRegenBonus>k__BackingField: 0
-  <DamageBonus>k__BackingField: 0
-  <PenetrationBonus>k__BackingField: 0
-  <DamageIncreaseBonus>k__BackingField: 0
-  <AttackRangeBonus>k__BackingField: 0
-  <AttackSpeedBonus>k__BackingField: 0
-  <SpeedBonus>k__BackingField: 0
-  <TravelRangeBonus>k__BackingField: 0
-  <CostBonus>k__BackingField: 0
-  <MinionAmountBonus>k__BackingField: 0
-  <MinionCooldownBonus>k__BackingField: 0
---- !u!114 &1063778144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063778134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a12d461e765d2146a650464cac53d2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  permUpgrades: {fileID: 11400000, guid: dfae209c707e4fe49b73922a1931e87e, type: 2}
-  offensiveStats: {fileID: 0}
-  defensiveStats: {fileID: 0}
-  minionStats: {fileID: 0}
-  speedStats: {fileID: 0}
-  costStats: {fileID: 0}
-  upgradeSlots: {fileID: 0}
-  statusEffectManager: {fileID: 0}
-  Team: 
-  Owner: {fileID: 0}
-  HealthSpawnMod: 1
-  isInvincible: 0
-  canDie: 1
-  canDieAtZero: 1
---- !u!4 &1063778145
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063778134}
+  m_GameObject: {fileID: 1346564185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09, y: -2.82, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 29359196}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1292277413
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!1 &1363471260
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17473,36 +16707,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1292277414}
-  - component: {fileID: 1292277415}
+  - component: {fileID: 1363471261}
+  - component: {fileID: 1363471262}
   m_Layer: 0
-  m_Name: playerShip1_blue
+  m_Name: spaceAstronauts_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1292277414
+--- !u!4 &1363471261
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292277413}
+  m_GameObject: {fileID: 1363471260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 433032712}
+  m_Father: {fileID: 702047904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1292277415
+--- !u!212 &1363471262
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292277413}
+  m_GameObject: {fileID: 1363471260}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -17536,17 +16770,135 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 654d927b89210d948b418cd5280ebe59, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06107cc47fe885f47a08859216575f35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.99, y: 0.75}
+  m_Size: {x: 0.68, y: 0.86}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1573627700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1573627703}
+  - component: {fileID: 1573627702}
+  - component: {fileID: 1573627701}
+  - component: {fileID: 1573627704}
+  m_Layer: 0
+  m_Name: spaceBuilding_017
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1573627701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573627700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c12dea14654a141b0487313f6f6c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsMouseOver: 0
+  MinionTemplate: {fileID: 0}
+  MinionSpawned: {fileID: 0}
+  Enemy: {fileID: 0}
+  HomeLocation: {fileID: 0}
+  Owner: {fileID: 0}
+  Team: 
+  Selector: {fileID: 0}
+--- !u!212 &1573627702
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573627700}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 86762eb9a37ae6d4cbd94ef0089fd9db, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.84, y: 0.84}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1573627703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573627700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.01, y: 0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1573627704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573627700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82f6d13ab4aabb4084d65317fb049c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsMouseOver: 0
+  SelectableZone: {fileID: 0}
 --- !u!1 &1946060656
 GameObject:
   m_ObjectHideFlags: 0
@@ -17574,11 +16926,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946060656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2022074674}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1946060658
 MonoBehaviour:
@@ -17635,7 +16987,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -18323,11 +17675,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022074672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 654010607}
   - {fileID: 1946060657}
+  - {fileID: 654010607}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

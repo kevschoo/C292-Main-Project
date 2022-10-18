@@ -5,27 +5,28 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class SpaceObject : MonoBehaviour
 {
-    [SerializeField] PermUpgrades permUpgrades;
 
-    [SerializeField] OffensiveStats offensiveStats;
+    [field: SerializeField] public PermUpgrades permUpgrades { get; set; }
 
-    [SerializeField] DefensiveStats defensiveStats;
+    [field: SerializeField] public OffensiveStats offensiveStats { get; set; }
 
-    [SerializeField] MinionStat minionStats;
+    [field: SerializeField] public DefensiveStats defensiveStats { get; set; }
 
-    [SerializeField] SpeedStat speedStats;
+    [field: SerializeField] public MinionStat minionStats { get; set; }
 
-    [SerializeField] CostStat costStats;
+    [field: SerializeField] public SpeedStat speedStats { get; set; }
 
-    [SerializeField] UpgradeSlots upgradeSlots;
+    [field: SerializeField] public CostStat costStats { get; set; }
 
-    [SerializeField] StatusEffectManager statusEffectManager;
+    [field: SerializeField] public UpgradeSlots upgradeSlots { get; set; }
+
+    [field: SerializeField] public StatusEffectManager statusEffectManager { get; set; }
 
     //[SerializeField] List<string> AvaliableComponents = new List<string>();
 
-    [SerializeField] string Team;
+    [field: SerializeField] public string Team { get; set; }
 
-    [SerializeField] Player Owner;
+    [field: SerializeField] public Player Owner { get; set; }
 
     [SerializeField] float HealthSpawnMod = 1.0f;
 
@@ -79,12 +80,22 @@ public class SpaceObject : MonoBehaviour
     }
 
 
-    private void Start()
+    
+    public void SetOwner(Player Owner)
     {
-        UpgradeRecieved();
+        this.Owner = Owner;
+    }
+    public void SetTeam(string Team)
+    {
+        this.Team = Team;
     }
 
-    private void UpgradeRecieved()
+    private void Start()
+    {
+        UpgradeReceived();
+    }
+
+    private void UpgradeReceived()
     {
         if (this.statusEffectManager != null)
         { this.statusEffectManager.ClearAllEffects(); }
@@ -121,6 +132,29 @@ public class SpaceObject : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    void UpdateHealth(int Change)
+    {
+        if(defensiveStats != null)
+        {
+            if(Change >= 0)
+            {
+                defensiveStats._CurrentHealth += Change;
+                if (defensiveStats._CurrentHealth > defensiveStats._MaxHealth)
+                {
+                    defensiveStats._CurrentHealth = defensiveStats._MaxHealth;
+                }
+            }
+            else if(Change < 0 && this.isInvincible == false)
+            {
+                defensiveStats._CurrentHealth += Change;
+                if (canDie == true && defensiveStats._CurrentHealth <= 0)
+                {
+                    ForceDeath();
+                }
+            }
+        }
+        
+    }
 
     /*
     bruh moment super if moment! could be switchstatement if wasnt so bad!

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 /*
@@ -11,7 +12,7 @@ This class will contain the following methods and variables
 
 public static class GameTime 
 {
-
+    
     public static bool IsPaused()
     {
 
