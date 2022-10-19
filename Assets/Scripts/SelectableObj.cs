@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,12 @@ public class SelectableObj : MonoBehaviour
 {
     [SerializeField] bool IsMouseOver = false;
     [SerializeField] Collider2D SelectableZone;
+    
+
+    private void Awake()
+    {
+       
+    }
     void Start()
     {
        
@@ -26,14 +33,17 @@ public class SelectableObj : MonoBehaviour
     {
         IsMouseOver = true;
         //call event hoverUI(gameobject) 
+        
     }
 
     private void OnMouseDown()
     {
        if (IsMouseOver == true)
         {
-            Debug.Log(this.gameObject.name);
+            //Debug.Log(this.gameObject.name);
             //call event(gameobject)
+            Debug.Log("The Selectable:Ayo passin in this object! " + this.gameObject.name);
+            ObjectSelectEvent.InvokeSelectionChanged(this.gameObject);
         }
     }
 
@@ -41,5 +51,7 @@ public class SelectableObj : MonoBehaviour
     {
         IsMouseOver = false;
         //call event closeHoverUi()
+        
+        //ObjectSelectEvent.InvokeSelectionCleared(this.gameObject);
     }
 }

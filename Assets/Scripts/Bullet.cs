@@ -10,14 +10,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(Speed == null)
-        {
-            this.Speed = 10f;
-        }
-        if(Lifetime == null)
-        {
-            this.Lifetime = 4f;
-        }
+
         Destroy(gameObject, Lifetime);
     }
 

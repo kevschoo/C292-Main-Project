@@ -33,23 +33,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
+            
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 //MainCam.transform.position = new Vector3(hit.point.x, hit.point.y, MainCam.transform.position.z);
-                Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+                //Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+
+                Camera.main.transform.position = hit.transform.position;
             }
+            
         }
 
-        if (Input.GetButtonDown("Escape"))
+        if (Input.GetButtonDown("Escape") || Input.GetMouseButtonDown(2))
         {
+            ObjectSelectEvent.InvokeSelectionCleared(this.gameObject);
             if (InMenu == true)
             {
                 InMenu = false;
                 GameTime.Resume();
+
             }
             else
             {
