@@ -52,7 +52,7 @@ public static class ObjectStatusHandler
         stat._Penetration = stat._BasePenetration + permUpgrades.PenetrationBonus;
         stat._DamageIncrease = stat._BaseDamageIncrease + permUpgrades.DamageIncreaseBonus;
         stat._AttackRange = stat._BaseAttackRange + permUpgrades.AttackRangeBonus;
-        stat._AttackSpeed = stat._BaseAttackSpeed * permUpgrades.AttackSpeedBonus;
+        stat._AttackSpeed = stat._BaseAttackSpeed + permUpgrades.AttackSpeedBonus;
     }
     public static void Recalculate(OffensiveStats stat, PermUpgrades permUpgrades, UpgradeSlots upgradeSlots)
     {
@@ -60,7 +60,7 @@ public static class ObjectStatusHandler
         stat._Penetration = stat._BasePenetration + permUpgrades.PenetrationBonus + upgradeSlots.PenetrationBonus;
         stat._DamageIncrease = stat._BaseDamageIncrease + permUpgrades.DamageIncreaseBonus + upgradeSlots.DamageIncreaseBonus;
         stat._AttackRange = stat._BaseAttackRange + permUpgrades.AttackRangeBonus + upgradeSlots.AttackRangeBonus;
-        stat._AttackSpeed = stat._BaseAttackSpeed * permUpgrades.AttackSpeedBonus * upgradeSlots.AttackSpeedBonus;
+        stat._AttackSpeed = stat._BaseAttackSpeed + permUpgrades.AttackSpeedBonus + upgradeSlots.AttackSpeedBonus;
     }
     public static void Recalculate(OffensiveStats stat, UpgradeSlots upgradeSlots)
     {
@@ -68,7 +68,7 @@ public static class ObjectStatusHandler
         stat._Penetration = stat._BasePenetration + upgradeSlots.PenetrationBonus;
         stat._DamageIncrease = stat._BaseDamageIncrease +  upgradeSlots.DamageIncreaseBonus;
         stat._AttackRange = stat._BaseAttackRange + upgradeSlots.AttackRangeBonus;
-        stat._AttackSpeed = stat._BaseAttackSpeed * upgradeSlots.AttackSpeedBonus;
+        stat._AttackSpeed = stat._BaseAttackSpeed + upgradeSlots.AttackSpeedBonus;
     }
 
     //Minion Handler-------------------------------------------------------------------------------------------------------------------

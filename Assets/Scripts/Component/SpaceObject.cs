@@ -32,7 +32,7 @@ public class SpaceObject : MonoBehaviour
 
     [SerializeField] float HealthSpawnMod = 1.0f;
 
-    [SerializeField] float HealthRegenMod = 1.0f;
+    [SerializeField] public float HealthRegenMod = 1.0f;
 
     [SerializeField] bool isRegenerating = false;
 

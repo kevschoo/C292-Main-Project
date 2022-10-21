@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class ObjectAI : MonoBehaviour
 {
-    [field: SerializeField] public abstract GameObject ObjectiveTarget { get; set; }
+    [SerializeField] public abstract GameObject ObjectiveTarget { get; set; }
 
-    [field: SerializeField] public abstract GameObject Target { get; set; }
+    [SerializeField] public abstract GameObject Target { get; set; }
 
-    [field: SerializeField] public abstract bool AiIsEnabled { get; set; }
+    [SerializeField] public abstract bool AiIsEnabled { get; set; }
 
     public abstract void DamageTaken(GameObject Damager);
 }

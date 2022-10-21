@@ -9,11 +9,12 @@ using UnityEngine;
 public class UpgradeSlots : MonoBehaviour
 {
 
-    [SerializeField] int MaxShipParts; //Shouldn't Change unless a part adds more slots (unplanned)
-    [SerializeField] int CurShipParts;
-    [SerializeField] List<ShipPart> ChosenParts = new List<ShipPart>();
-    [SerializeField] List<ShipPart> IllegalParts = new List<ShipPart>();
-    [SerializeField] List<UniquePart> UniqueParts = new List<UniquePart>();
+    [field: SerializeField] public int MaxShipParts { get; set; }
+    //Shouldn't Change unless a part adds more slots (unplanned)
+    [field: SerializeField] public int CurShipParts { get; set; }
+    [field: SerializeField] public List<ShipPart> ChosenParts { get; set; }
+    [field: SerializeField] public List<ShipPart> IllegalParts { get; set; }
+    [field: SerializeField] public List<UniquePart> UniqueParts { get; set; }
 
     //Defensive
     [field: SerializeField] public int HealthBonus { get; set; }
@@ -41,6 +42,7 @@ public class UpgradeSlots : MonoBehaviour
         CheckForTooManyParts();
         CalculateBonuses();
         AddUnqiueParts();
+
     }
 
     void CheckForIllegalParts()

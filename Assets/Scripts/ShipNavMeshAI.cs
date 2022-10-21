@@ -185,11 +185,8 @@ public class ShipNavMeshAI : ObjectAI
         else
         {
             Agent.SetDestination(HomeBase.transform.position);
-            if (Agent.nextPosition[0] != null)
-            {
-                Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
-                FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
-            }
+            Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
+            FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
         }
     }
     //This AI will move closer until in range then fire, then go home
@@ -223,11 +220,8 @@ public class ShipNavMeshAI : ObjectAI
             else
             {
                 Agent.SetDestination(HomeBase.transform.position);
-                if (Agent.nextPosition[0] != null)
-                {
-                    Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
-                    FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
-                }
+                Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
+                FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
             }
         }
 
@@ -242,11 +236,8 @@ public class ShipNavMeshAI : ObjectAI
             {
                 if(DistanceThisToHome < TravelRange)
                 {
-                    if (Agent.nextPosition[0] != null)
-                    {
-                        Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
-                        FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
-                    }
+                    Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
+                    FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
                     Agent.SetDestination(Target.transform.position);
                 }
                 else
@@ -302,11 +293,8 @@ public class ShipNavMeshAI : ObjectAI
             else
             {
                 Agent.SetDestination(HomeBase.transform.position);
-                if (Agent.nextPosition[0] != null)
-                {
-                    Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
-                    FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .1f));
-                }
+                Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
+                FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .1f));
             }
         }
 
@@ -321,11 +309,8 @@ public class ShipNavMeshAI : ObjectAI
             {
                 if (DistanceThisToHome < TravelRange)
                 {
-                    if (Agent.nextPosition[0] != null)
-                    {
-                        Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
-                        FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .1f));
-                    }
+                    Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
+                    FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .1f));
                     Agent.SetDestination(Target.transform.position);
                 }
                 else

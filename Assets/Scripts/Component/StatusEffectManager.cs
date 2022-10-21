@@ -7,10 +7,11 @@ using UnityEngine;
 
 public class StatusEffectManager : MonoBehaviour
 {
+    //Little confusing but bool is whether ship can be affected by effects
     [field: SerializeField] public bool IsImmuneToEffects { get; set; }
-    [SerializeField] List<string> CurrentEffects = new List<string>();
-    [SerializeField] List<string> ImmuneToEffects = new List<string>();
-    [SerializeField] List<StatusEffect> CurrentEffectType = new List<StatusEffect>();
+    [field: SerializeField] public List<string> CurrentEffects { get; set; }
+    [field: SerializeField] public List<string> ImmuneToEffects { get; set; }
+    [field: SerializeField] public List<StatusEffect> CurrentEffectType { get; set; }
     public bool HasStatus(StatusEffect EffectType)
     {
         if(CurrentEffects.Contains(EffectType.name))
