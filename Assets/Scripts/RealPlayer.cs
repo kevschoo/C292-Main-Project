@@ -12,8 +12,6 @@ public class RealPlayer : Player
 
     [SerializeField] Camera MainCam;
 
-    [SerializeField] bool FreeCam = false;
-
     [SerializeField] bool InMenu = false;
 
 

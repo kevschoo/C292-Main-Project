@@ -5,21 +5,27 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-public class ShipNavMeshAI : MonoBehaviour
+[DisallowMultipleComponent]
+public class ShipNavMeshAI : ObjectAI
 {
+
+    [field: SerializeField] public override GameObject ObjectiveTarget { get; set; }
+    [field: SerializeField] public override GameObject Target { get; set; }
+    [field: SerializeField] public override bool AiIsEnabled { get; set; }
+
     NavMeshAgent Agent;
-    [SerializeField] GameObject Target;
+    [SerializeField] bool AllowTargetChange;
     [SerializeField] GameObject HomeBase;
+    [SerializeField] bool InCombat;
+    [SerializeField] int BaseAiType = 0;
+    [SerializeField] int AiType = 0;
     [SerializeField] bool IsAtHome;
     [SerializeField] float MaxDistanceFromHome = 0.1f;
     [SerializeField] float AttackAtPercentOfRange = 0.9f;
     [SerializeField] float AccelMod = 0.33f;
     [SerializeField] float SpeedMod = 0.66f;
 
-    [SerializeField] bool InCombat;
-    [SerializeField] bool AiIsEnabled = true;
-    [SerializeField] int BaseAiType = 0;
-    [SerializeField] int AiType = 0;
+
 
     [SerializeField] List<UniquePart> WeaponParts = new List<UniquePart>();
     [SerializeField] List<UniquePart> DefenseParts = new List<UniquePart>();
@@ -38,7 +44,13 @@ public class ShipNavMeshAI : MonoBehaviour
 
     [field: SerializeField] public GameObject BulletType { get; set; }
 
+    public override void DamageTaken(GameObject Damager)
+    {
+        Debug.Log("Damager is:" + Damager.name);
+       
+        SetTarget(Damager);
 
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +70,7 @@ public class ShipNavMeshAI : MonoBehaviour
     }
     private void Awake()
     {
+        AiIsEnabled = true;
         Agent = GetComponent<NavMeshAgent>();
         Agent.updateRotation = false;
         Agent.updateUpAxis = false;
@@ -74,7 +87,8 @@ public class ShipNavMeshAI : MonoBehaviour
     }
     public void SetTarget(GameObject target)
     {
-        this.Target = target;
+        if(AllowTargetChange == true)
+        { this.Target = target; }
     }
 
     public void SetHome(GameObject HomeBase)
@@ -108,6 +122,9 @@ public class ShipNavMeshAI : MonoBehaviour
                     break;
                 case 2:
                     FighterAI();
+                    break;
+                case 3:
+                    ObjectiveAI();
                     break;
                 default:
                     Debug.Log("AI ERROR");
@@ -341,6 +358,79 @@ public class ShipNavMeshAI : MonoBehaviour
             {
                 ActivateDefenses(Target, this.gameObject);
             }
+        }
+    }
+
+    //This AI will move closer to  the objective without care, it will shoot other targets along the way
+    void ObjectiveAI()
+    {
+        RecalculateNVA();
+        //If the objects stats are null, we cant do everything
+        if (spaceObject == null)
+        { return; }
+
+        //Deactivate Weapons and defense when not in combat
+        if (!InCombat && WeaponsActive)
+        { DeactivateWeapons(); }
+        if (!InCombat && DefensesActive)
+        { DeactivateDefenses(); }
+
+        if (Target == null && this.ObjectiveTarget == null)
+        {
+            InCombat = false;
+            Agent.SetDestination(this.transform.position);
+        }
+        float AttackRange = this.spaceObject.offensiveStats._AttackRange * AttackAtPercentOfRange;
+        float TravelRange = this.spaceObject.speedStats._TravelRange;
+        if (Target != null && Target != this.gameObject)
+        {
+            InCombat = true;
+
+            if (DistanceThisToTarget < AttackRange)
+            {
+                //Debug.Log("1");
+                if (!WeaponsActive)
+                { ActivateWeapons(Target); }
+                FaceTarget(Vector3.Lerp(this.transform.position, Target.transform.position, .05f));
+                if (ObjectiveTarget == Target)
+                { Agent.SetDestination(this.transform.position); }
+                else if(ObjectiveTarget != null)
+                {Agent.SetDestination(ObjectiveTarget.transform.position);}
+                else
+                { Agent.SetDestination(Target.transform.position); }
+            }
+            //if the target is not within travel range from our home and not in our attack range, attempt to move closer
+            else if (DistanceThisToTarget > AttackRange)
+            {
+                //Debug.Log("2");
+                if(ObjectiveTarget != null)
+                {
+                    FaceTarget(Vector3.Lerp(this.transform.position, ObjectiveTarget.transform.position, .05f));
+                    Agent.SetDestination(ObjectiveTarget.transform.position); 
+                }
+                else
+                { Agent.SetDestination(Target.transform.position); }
+            }
+            //if we have defenses and they are not active, activate them if we take damage
+            if (spaceObject.defensiveStats != null && this.DefenseParts.Count != 0)
+            {
+                ActivateDefenses(Target, this.gameObject);
+            }
+        }
+        else if (Target == null && this.ObjectiveTarget != null)
+        {
+            //Debug.Log("3");
+            if (Vector2.Distance(ObjectiveTarget.transform.position, this.gameObject.transform.position) < AttackRange)
+            {
+                Agent.SetDestination(this.transform.position);
+                Target = ObjectiveTarget;
+            }
+            else
+            {
+                FaceTarget(Vector3.Lerp(this.transform.position, ObjectiveTarget.transform.position, .05f));
+                Agent.SetDestination(ObjectiveTarget.transform.position);
+            }
+        
         }
     }
 

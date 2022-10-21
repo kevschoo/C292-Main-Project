@@ -22,6 +22,8 @@ public class SpaceObject : MonoBehaviour
 
     [field: SerializeField] public StatusEffectManager statusEffectManager { get; set; }
 
+    [field: SerializeField] public ObjectAI objectAI { get; set; }
+
     //[SerializeField] List<string> AvaliableComponents = new List<string>();
 
     [field: SerializeField] public string Team { get; set; }
@@ -31,6 +33,8 @@ public class SpaceObject : MonoBehaviour
     [SerializeField] float HealthSpawnMod = 1.0f;
 
     [SerializeField] float HealthRegenMod = 1.0f;
+
+    [SerializeField] bool isRegenerating = false;
 
     [SerializeField] bool isInvincible = false;
 
@@ -79,6 +83,10 @@ public class SpaceObject : MonoBehaviour
             statusEffectManager = this.gameObject.GetComponent<StatusEffectManager>();
             //AvaliableComponents.Add(StatusEffectManager.name);
         }
+        if (this.gameObject.GetComponent<ObjectAI>())
+        {
+            objectAI = this.gameObject.GetComponent<ObjectAI>();
+        }
 
     }
 
@@ -117,7 +125,11 @@ public class SpaceObject : MonoBehaviour
         {
             if (this.defensiveStats._HealthRegen != 0)
             {
-                StartCoroutine(RegenerateHealth());
+                if(isRegenerating == false)
+                {
+                    StartCoroutine(RegenerateHealth());
+                }
+               
             }
         }
     }
@@ -284,33 +296,41 @@ public class SpaceObject : MonoBehaviour
             if (bulletData.Team != this.Team)
             {
                 DamageCalculator(bulletData, this.defensiveStats, 1f);
+                if(objectAI != null)
+                {
+                    Debug.Log("Ayo This guy hiting us:" + bulletData.Spawner.name);
+                    objectAI.DamageTaken(bulletData.Spawner.gameObject);
+                }
                 Destroy(collision.gameObject);
 
             }
         }
     }
 
+   
     //bruh float casting moment
     void DamageCalculator(Bullet bull, DefensiveStats stats, float extraMod)
         {
-        Debug.Log("Damage:" + bull.ParentDamage + ", Team:" + bull.Team + ", Player:" + bull.Owner + ", Penetration:" + bull.ParentPenetration + ", DMGI:" + bull.ParentDamageIncrease);
+        //Debug.Log("Damage:" + bull.ParentDamage + ", Team:" + bull.Team + ", Player:" + bull.Owner + ", Penetration:" + bull.ParentPenetration + ", DMGI:" + bull.ParentDamageIncrease);
 
         int penetratedDefense = stats._Defense - bull.ParentPenetration;
             if (penetratedDefense <= 0)
             { penetratedDefense = 0; }
             int damageMinusDefense = bull.ParentDamage - penetratedDefense;
-            Debug.Log("DamageInTotalBeforeBonus:" + damageMinusDefense);
+            //Debug.Log("DamageInTotalBeforeBonus:" + damageMinusDefense);
             float DamageMod = (((float)bull.ParentDamageIncrease - (float)stats._DamageReduction + 100) / 100);
             float totalDamage = DamageMod * (float)damageMinusDefense * extraMod;
             int DamageToTake = Mathf.RoundToInt(totalDamage);
             UpdateHealth(-DamageToTake);
-            Debug.Log("DamageInTotalAfterBonus:" + DamageToTake);
+           // Debug.Log("DamageInTotalAfterBonus:" + DamageToTake);
             
         }
     IEnumerator RegenerateHealth()
     {
+        isRegenerating = true;
         yield return new WaitForSeconds(1f * HealthRegenMod);
         UpdateHealth(this.defensiveStats._HealthRegen);
+        isRegenerating = false;
     }
 }
 
