@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -35,7 +36,8 @@ public class UserTowerShop : MonoBehaviour
 
     void ShowSelectedTowerShop(object sender, ObjectSelectEventArgs args)
     {
-        if (args == null)
+        
+        if (args.SelectedObj == null)
         {
             Debug.Log("Event args gave null somehow ");
             return;
@@ -43,15 +45,17 @@ public class UserTowerShop : MonoBehaviour
         SelectedObject = args.SelectedObj;
         if(SelectedObject.gameObject.GetComponent<Tower>() != null)
         {
+            this.gameObject.SetActive(true);
             this.TowerText.text = SelectedObject.name;
         }
         //this debug will cause null pointer since other event insta clears name lmao
         //Debug.Log("UserShipShop: Event args gave this object: " + args.SelectedObj.name);
     }
 
-    void OnClearedSelect(object sender, ObjectSelectEventArgs args)
+    void OnClearedSelect(object sender, EventArgs args)
     {
-        SelectedObject = null;
-        Debug.Log("UserShipShop: Event caused object clear " + args.SelectedObj);
+        this.gameObject.SetActive(false);
+        this.SelectedObject = null;
+        Debug.Log("UserShipShop: Event caused object clear ");
     }
 }

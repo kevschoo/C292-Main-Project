@@ -91,10 +91,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2057194692660968272}
-  - component: {fileID: 2057194692660968275}
+  - component: {fileID: -4537266194624503520}
+  - component: {fileID: 5615325762276436829}
+  - component: {fileID: -3452047140390598925}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +116,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2057194692660968275
+--- !u!70 &-4537266194624503520
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057194692660968274}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.4, y: 0.15}
+  m_Direction: 1
+--- !u!114 &5615325762276436829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,8 +141,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 2057194692660968274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011343d9e34274d4cb37296ce568fce5, type: 3}
+  m_Script: {fileID: 11500000, guid: d34fed2e99117ff408c86dea8e8395dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 15
-  <Lifetime>k__BackingField: 5
+  <Speed>k__BackingField: 10
+  <Lifetime>k__BackingField: 3
+  <ParentDamage>k__BackingField: 0
+  <ParentPenetration>k__BackingField: 0
+  <ParentDamageIncrease>k__BackingField: 0
+  <Team>k__BackingField: 
+  <Owner>k__BackingField: {fileID: 0}
+  <Spawner>k__BackingField: {fileID: 0}
+  <AllowFriendlyFire>k__BackingField: 0
+  <MaxTargetsToPenetrate>k__BackingField: 0
+--- !u!50 &-3452047140390598925
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057194692660968274}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

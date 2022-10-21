@@ -18,16 +18,16 @@ public class ObjectSelectEventArgs : EventArgs
 public static class ObjectSelectEvent 
 {
     public static event EventHandler<ObjectSelectEventArgs> SelectionChanged;
-    public static event EventHandler<ObjectSelectEventArgs> SelectionCleared;
+    public static event EventHandler SelectionCleared;
 
     public static void InvokeSelectionChanged(GameObject SelectedObject)
     {
         SelectionChanged(null, new ObjectSelectEventArgs { SelectedObj = SelectedObject });
         
     }
-    public static void InvokeSelectionCleared(GameObject SelectedObject)
+    public static void InvokeSelectionCleared()
     {
-        SelectionChanged(null, new ObjectSelectEventArgs { SelectedObj = null });
+        SelectionCleared(null, EventArgs.Empty);
 
     }
 }

@@ -30,11 +30,14 @@ public class SpaceObject : MonoBehaviour
 
     [SerializeField] float HealthSpawnMod = 1.0f;
 
+    [SerializeField] float HealthRegenMod = 1.0f;
+
     [SerializeField] bool isInvincible = false;
 
     [SerializeField] bool canDie = true;
 
     [SerializeField] bool canDieAtZero = true;
+    [SerializeField] public bool AllowFriendlyFire { get; set; }
 
     private void Awake()
     {
@@ -80,7 +83,7 @@ public class SpaceObject : MonoBehaviour
     }
 
 
-    
+
     public void SetOwner(Player Owner)
     {
         this.Owner = Owner;
@@ -93,6 +96,7 @@ public class SpaceObject : MonoBehaviour
     private void Start()
     {
         UpgradeReceived();
+
     }
 
     private void UpgradeReceived()
@@ -109,19 +113,26 @@ public class SpaceObject : MonoBehaviour
     private void Update()
     {
         Death();
+        if(defensiveStats != null)
+        {
+            if (this.defensiveStats._HealthRegen != 0)
+            {
+                StartCoroutine(RegenerateHealth());
+            }
+        }
     }
     void Death()
     {
-        if(this.defensiveStats == null)
+        if (this.defensiveStats == null)
         { return; }
 
-        if(canDie == false)
+        if (canDie == false)
         { return; }
 
-        if(canDieAtZero == false)
+        if (canDieAtZero == false)
         { return; }
 
-        if(defensiveStats._CurrentHealth <= 0)
+        if (defensiveStats._CurrentHealth <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -134,26 +145,36 @@ public class SpaceObject : MonoBehaviour
 
     void UpdateHealth(int Change)
     {
-        if(defensiveStats != null)
+        if (defensiveStats != null)
         {
-            if(Change >= 0)
+            if (Change >= 0)
             {
                 defensiveStats._CurrentHealth += Change;
                 if (defensiveStats._CurrentHealth > defensiveStats._MaxHealth)
                 {
                     defensiveStats._CurrentHealth = defensiveStats._MaxHealth;
+
                 }
             }
-            else if(Change < 0 && this.isInvincible == false)
+            else if (Change < 0 && this.isInvincible == false)
             {
                 defensiveStats._CurrentHealth += Change;
                 if (canDie == true && defensiveStats._CurrentHealth <= 0)
                 {
                     ForceDeath();
                 }
+                else if(canDieAtZero == false && defensiveStats._CurrentHealth <= 0)
+                {
+                    Debug.Log("Health at zero");
+                    //maybe future repair mechanic or something for healthatzero and disable ai
+                    if(this.gameObject.GetComponent<ShipNavMeshAI>() != null)
+                    {
+                        this.gameObject.GetComponent<ShipNavMeshAI>().ChangeAI(false);
+                    }
+                }
             }
         }
-        
+
     }
 
     /*
@@ -168,7 +189,7 @@ public class SpaceObject : MonoBehaviour
     {
         if (permUpgrades == null && upgradeSlots == null)
         {
-            if(offensiveStats != null)
+            if (offensiveStats != null)
             { ObjectStatusHandler.Recalculate(offensiveStats); }
             if (defensiveStats != null)
             { ObjectStatusHandler.Recalculate(defensiveStats); }
@@ -222,4 +243,74 @@ public class SpaceObject : MonoBehaviour
 
     }
 
+    //should be recoded
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log("Hit");
+        if (collision.gameObject.GetComponent<SpaceObject>())
+        {
+
+        }
+        if (collision.gameObject.GetComponent<Bullet>())
+        {
+            Bullet bulletData = (Bullet)collision.gameObject.GetComponent<Bullet>();
+            
+            //Do not allow bullets to hit players owned ships
+            if (bulletData.Spawner == this.gameObject)
+            { return; }
+            //If the object doesnt have health don't bother
+            if (this.defensiveStats == null)
+            {
+                Destroy(collision.gameObject);
+                return;
+            }
+            //Are they same team and friendlyfire
+            if (bulletData.Team == this.Team && bulletData.AllowFriendlyFire)
+            {
+                //is the bullet from us or friend
+                if(bulletData.Owner == this.Owner)
+                {
+                    DamageCalculator(bulletData, this.defensiveStats, .5f);
+                    Destroy(collision.gameObject);
+                }
+                //from friend
+                if (bulletData.Owner != this.Owner)
+                {
+                    DamageCalculator(bulletData, this.defensiveStats, .5f);
+                    Destroy(collision.gameObject);
+                }
+            }
+            //if they are not our team
+            if (bulletData.Team != this.Team)
+            {
+                DamageCalculator(bulletData, this.defensiveStats, 1f);
+                Destroy(collision.gameObject);
+
+            }
+        }
+    }
+
+    //bruh float casting moment
+    void DamageCalculator(Bullet bull, DefensiveStats stats, float extraMod)
+        {
+        Debug.Log("Damage:" + bull.ParentDamage + ", Team:" + bull.Team + ", Player:" + bull.Owner + ", Penetration:" + bull.ParentPenetration + ", DMGI:" + bull.ParentDamageIncrease);
+
+        int penetratedDefense = stats._Defense - bull.ParentPenetration;
+            if (penetratedDefense <= 0)
+            { penetratedDefense = 0; }
+            int damageMinusDefense = bull.ParentDamage - penetratedDefense;
+            Debug.Log("DamageInTotalBeforeBonus:" + damageMinusDefense);
+            float DamageMod = (((float)bull.ParentDamageIncrease - (float)stats._DamageReduction + 100) / 100);
+            float totalDamage = DamageMod * (float)damageMinusDefense * extraMod;
+            int DamageToTake = Mathf.RoundToInt(totalDamage);
+            UpdateHealth(-DamageToTake);
+            Debug.Log("DamageInTotalAfterBonus:" + DamageToTake);
+            
+        }
+    IEnumerator RegenerateHealth()
+    {
+        yield return new WaitForSeconds(1f * HealthRegenMod);
+        UpdateHealth(this.defensiveStats._HealthRegen);
+    }
 }
+

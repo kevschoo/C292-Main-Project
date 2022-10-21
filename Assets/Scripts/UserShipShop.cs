@@ -17,13 +17,13 @@ public class UserShipShop : MonoBehaviour
     void Start()
     {
         ObjectSelectEvent.SelectionCleared += OnClearedSelect;
-        ObjectSelectEvent.SelectionChanged += ShowSelectedTowerShop;
+        ObjectSelectEvent.SelectionChanged += ShowSelectedShipShop;
     }
 
     private void OnDestroy()
     {
         ObjectSelectEvent.SelectionCleared -= OnClearedSelect;
-        ObjectSelectEvent.SelectionChanged -= ShowSelectedTowerShop;
+        ObjectSelectEvent.SelectionChanged -= ShowSelectedShipShop;
     }
     // Update is called once per frame
     void Update()
@@ -34,25 +34,32 @@ public class UserShipShop : MonoBehaviour
         }
     }
 
-    void ShowSelectedTowerShop(object sender, ObjectSelectEventArgs args)
+    void ShowSelectedShipShop(object sender, ObjectSelectEventArgs args)
     {
-        if(args == null)
+        
+        if(args.SelectedObj == null)
         {
             Debug.Log("Event args gave null somehow ");
             return;
         }
         SelectedObject = args.SelectedObj;
-        if (SelectedObject.gameObject.GetComponent<Tower>() == null)
+        if(SelectedObject != null)
         {
-            this.ShipText.text = SelectedObject.name;
+            if (SelectedObject.gameObject.GetComponent<Tower>() == null && SelectedObject.gameObject.GetComponent<SpaceObject>())
+            {
+                this.gameObject.SetActive(true);
+                this.ShipText.text = SelectedObject.name;
+            }
         }
+
         //this debug will cause null pointer since other event insta clears name lmao
         //Debug.Log("UserShipShop: Event args gave this object: " + args.SelectedObj.name);
     }
 
-    void OnClearedSelect(object sender, ObjectSelectEventArgs args)
+    void OnClearedSelect(object sender, EventArgs args)
     {
-        SelectedObject = null;
-        Debug.Log("UserShipShop: Event caused object clear " + args.SelectedObj);
+        this.gameObject.SetActive(false);
+        this.SelectedObject = null;
+        Debug.Log("UserShipShop: Event caused object clear ");
     }
 }

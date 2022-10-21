@@ -18,20 +18,45 @@ public class ShipNavMeshAI : MonoBehaviour
 
     [SerializeField] bool InCombat;
     [SerializeField] bool AiIsEnabled = true;
+    [SerializeField] int BaseAiType = 0;
+    [SerializeField] int AiType = 0;
 
     [SerializeField] List<UniquePart> WeaponParts = new List<UniquePart>();
     [SerializeField] List<UniquePart> DefenseParts = new List<UniquePart>();
     [SerializeField] bool WeaponsActive;
     [SerializeField] bool DefensesActive;
-    [SerializeField] float rotateDir = 1;
+    [SerializeField] bool HasCheckedParts = false;
+
+    [SerializeField] float WeaponPartDelay = .15f;
+    [SerializeField] float DefensePartDelay = .15f;
+
     [SerializeField] bool rotateCRRunning = false;
-    SpaceObject spaceObject;
+    [SerializeField] float rotateDir = 1;
+    [SerializeField] bool allowOrbit = false;
+
+    [SerializeField] SpaceObject spaceObject;
 
     [field: SerializeField] public GameObject BulletType { get; set; }
 
 
     // Start is called before the first frame update
     void Start()
+    {
+        this.RecalculateNVA();
+        this.RecalculateSystems();
+
+    }
+    private void LateUpdate()
+    {
+        //this is a waste of processing power but the parts dont always get checked
+        if(HasCheckedParts == false)
+        {
+            this.RecalculateNVA();
+            this.RecalculateSystems();
+            HasCheckedParts = true;
+        }
+    }
+    private void Awake()
     {
         Agent = GetComponent<NavMeshAgent>();
         Agent.updateRotation = false;
@@ -40,16 +65,13 @@ public class ShipNavMeshAI : MonoBehaviour
         {
             this.spaceObject = gameObject.GetComponent<SpaceObject>();
         }
-        if(HomeBase == null)
+        if (HomeBase == null)
         {
 
             HomeBase = this.gameObject;
         }
         AiIsEnabled = true;
-        this.RecalculateNVA();
-        this.RecalculateSystems();
     }
-
     public void SetTarget(GameObject target)
     {
         this.Target = target;
@@ -60,104 +82,264 @@ public class ShipNavMeshAI : MonoBehaviour
         this.HomeBase = HomeBase;
     }
 
+    public void SetAiType(int val)
+    {
+        this.AiType = val;
+    }
     // Update is called once per frame
     void Update()
     {
-        if(AiIsEnabled)
+        DistanceThisToHome = Vector2.Distance(this.gameObject.transform.position, HomeBase.transform.position);
+        if(Target != null)
         {
-            BaseAI();
+            DistanceThisToTarget = Vector2.Distance(this.gameObject.transform.position, Target.transform.position);
+            DistanceHomeToTarget = Vector2.Distance(Target.transform.position, HomeBase.transform.position);
+        }
+
+        if (AiIsEnabled)
+        {
+            switch (AiType)
+            {
+                case 0:
+                    DefaultAI(); 
+                    break;
+                case 1:
+                    BaseAI();
+                    break;
+                case 2:
+                    FighterAI();
+                    break;
+                default:
+                    Debug.Log("AI ERROR");
+                    AiType = 0;
+                    break;
+            }
+
         }
         
     }
+    float DistanceThisToHome;
+    float DistanceThisToTarget;
+    float DistanceHomeToTarget;
 
     public void ChangeAI(bool value)
     {
-        AiIsEnabled = value;
+        this.AiIsEnabled = value;
+        this.DeactivateDefenses();
+        this.DeactivateWeapons();
     }
-
-    //Horrible AI lmao
-    void BaseAI()
+    public void ChangeAIStatus(int value)
     {
-        float distfromhome = Vector2.Distance(this.gameObject.transform.position, HomeBase.transform.position);
-        if (distfromhome < MaxDistanceFromHome)
+        this.AiType = value;
+        MaxDistanceFromHome = .1f;
+        this.DeactivateDefenses();
+        this.DeactivateWeapons();
+    }
+    //This AI will stay at home and orbit
+    void DefaultAI()
+    {
+        RecalculateNVA();
+        if (DistanceThisToHome < MaxDistanceFromHome)
+        { IsAtHome = true; }
+        else
+        { IsAtHome = false; }
+
+        //If the objects stats are null, we cant do everything
+        if (spaceObject == null)
+        { return; }
+
+        //Deactivate Weapons and defense when not in combat
+        if (!InCombat && WeaponsActive)
+        { DeactivateWeapons(); }
+        if (!InCombat && DefensesActive)
+        { DeactivateDefenses(); }
+
+        MaxDistanceFromHome = 1f;
+        InCombat = false;
+        //if we have no target and at home, afk
+        if (IsAtHome)
         {
-            IsAtHome = true;
+            Agent.SetDestination(this.transform.position);
+            OrbitTarget(HomeBase.transform.position);
+            FaceTarget(Vector3.Lerp(this.transform.position, this.HomeBase.transform.position, .05f));
+            return;
         }
+        //else go home, lerp around.
         else
         {
-            IsAtHome = false;
+            Agent.SetDestination(HomeBase.transform.position);
+            if (Agent.nextPosition[0] != null)
+            {
+                Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
+                FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
+            }
         }
-        //If the objects stats are not null
-        if (spaceObject != null)
+    }
+    //This AI will move closer until in range then fire, then go home
+    void BaseAI()
+    {
+        RecalculateNVA();
+        if (DistanceThisToHome < MaxDistanceFromHome)
+        {IsAtHome = true;}
+        else
+        {IsAtHome = false;}
+
+        //If the objects stats are null, we cant do everything
+        if (spaceObject == null)
+        {return; }
+
+        //Deactivate Weapons and defense when not in combat
+        if(!InCombat && WeaponsActive)
+        {DeactivateWeapons();}
+        if(!InCombat && DefensesActive)
+        {DeactivateDefenses();}
+
+        if(Target == null)
         {
-            //if we are not in combat but weapons active, deactivate
-            if (InCombat == false && WeaponsActive)
+            InCombat = false;
+            //if we have no target and at home, afk
+            if(IsAtHome)
             {
-                this.DeactivateWeapons();
+                return;
             }
-            if (InCombat == false && DefensesActive)
+            //else go home, lerp around.
+            else
             {
-                this.DeactivateDefenses();
-            }
-            //if we do not have a target and not at home, go home
-            if (Target == null && IsAtHome == false)
-            {
-                Debug.Log("heading home");
                 Agent.SetDestination(HomeBase.transform.position);
-                FaceTarget(HomeBase.transform.position);
-                InCombat = false;
+                if (Agent.nextPosition[0] != null)
+                {
+                    Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
+                    FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
+                }
             }
-            //if we have a target, attack, if not in range move
-            if (Target != null)
+        }
+
+        if(Target != null && Target != this.gameObject)
+        {
+            InCombat = true;
+            float AttackRange = this.spaceObject.offensiveStats._AttackRange * AttackAtPercentOfRange;
+            float TravelRange = this.spaceObject.speedStats._TravelRange;
+
+            //if the target is not within travel range from our home and not in our attack range, attempt to move closer
+            if(DistanceThisToTarget > AttackRange)
             {
-
-                InCombat = true;
-
-                
-                FaceTarget(Target.transform.position);
-                float dist =  Vector2.Distance(this.gameObject.transform.position, Target.transform.position);
-                if (distfromhome > this.spaceObject.speedStats._TravelRange)
+                if(DistanceThisToHome < TravelRange)
                 {
-                    Debug.Log("target outside travel range");
-                }
-                float x = Agent.remainingDistance;
-
-                //if the object is within travel range, go to the attack range
-                if (dist >= this.spaceObject.offensiveStats._AttackRange * AttackAtPercentOfRange)
-                {
-                    //Debug.Log("enemy out of range");
+                    if (Agent.nextPosition[0] != null)
+                    {
+                        Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
+                        FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
+                    }
                     Agent.SetDestination(Target.transform.position);
+                }
+                else
+                {
+                    this.Target = null;
+                }
 
-                }
-                //if they are within attack range, attack
-                else if (dist < this.spaceObject.offensiveStats._AttackRange * AttackAtPercentOfRange)
+            }
+            else if (DistanceThisToTarget < AttackRange)
+            {
+                if(!WeaponsActive)
+                { ActivateWeapons(Target); }
+                FaceTarget(Vector3.Lerp(this.transform.position, Target.transform.position, .05f));
+                Agent.SetDestination(this.transform.position);
+
+            }
+
+            //if we have defenses and they are not active, activate them if we take damage
+            if (spaceObject.defensiveStats != null && this.DefenseParts.Count != 0)
+            {
+                ActivateDefenses(Target, this.gameObject);
+            }
+        }
+    }
+    //This AI will move closer until in range then fire,and will continue going closer to orbit, then go home
+    void FighterAI()
+    {
+        RecalculateNVA();
+        if (DistanceThisToHome < MaxDistanceFromHome)
+        { IsAtHome = true; }
+        else
+        { IsAtHome = false; }
+
+        //If the objects stats are null, we cant do everything
+        if (spaceObject == null)
+        { return; }
+
+        //Deactivate Weapons and defense when not in combat
+        if (!InCombat && WeaponsActive)
+        { DeactivateWeapons(); }
+        if (!InCombat && DefensesActive)
+        { DeactivateDefenses(); }
+
+        if (Target == null)
+        {
+            InCombat = false;
+            //if we have no target and at home, afk
+            if (IsAtHome)
+            {
+                return;
+            }
+            //else go home, lerp around.
+            else
+            {
+                Agent.SetDestination(HomeBase.transform.position);
+                if (Agent.nextPosition[0] != null)
                 {
-                    //Debug.Log("enemy in range");
-                    Agent.destination = this.transform.position;
+                    Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
+                    FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .1f));
+                }
+            }
+        }
+
+        if (Target != null && Target != this.gameObject)
+        {
+            InCombat = true;
+            float AttackRange = this.spaceObject.offensiveStats._AttackRange * AttackAtPercentOfRange;
+            float TravelRange = this.spaceObject.speedStats._TravelRange;
+
+            //if the target is not within travel range from our home and not in our attack range, attempt to move closer
+            if (DistanceThisToTarget > AttackRange)
+            {
+                if (DistanceThisToHome < TravelRange)
+                {
+                    if (Agent.nextPosition[0] != null)
+                    {
+                        Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
+                        FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .1f));
+                    }
+                    Agent.SetDestination(Target.transform.position);
+                }
+                else
+                {
+                    this.Target = null;
+                }
+
+            }
+            else if (DistanceThisToTarget < AttackRange)
+            {
+                if (!WeaponsActive)
+                { ActivateWeapons(Target); }
+                FaceTarget(Vector3.Lerp(this.transform.position, Target.transform.position, .05f));
+                if(DistanceThisToTarget < 2.5f)
+                {
+                    Agent.SetDestination(this.transform.position);
                     OrbitTarget(Target.transform.position);
-                    if(this.rotateCRRunning == false)
-                    {
-                        StartCoroutine(CheckIfRotateStuck());
-                    }
+                    StartCoroutine(CheckIfRotateStuck());
                 }
-                //activate weapons if we can see the enemy
-                if (WeaponsActive == false && dist < this.spaceObject.offensiveStats._AttackRange)
+                else
                 {
-                    ActivateWeapons(Target);
+                    Agent.SetDestination(Target.transform.position);
                 }
-                //if we have defenses and they are not active, activate them if we take damage
-                if (spaceObject.defensiveStats != null && InCombat && this.DefenseParts.Count != 0)
-                {
-                    if (spaceObject.defensiveStats._CurrentHealth < spaceObject.defensiveStats._MaxHealth)
-                    {
-                        ActivateDefenses(Target, this.gameObject);
-                    }
-                    else
-                    {
-                        DefensesActive = false;
-                        DeactivateDefenses();
-                    }
-                }
+                
+
+            }
+
+            //if we have defenses and they are not active, activate them if we take damage
+            if (spaceObject.defensiveStats != null && this.DefenseParts.Count != 0)
+            {
+                ActivateDefenses(Target, this.gameObject);
             }
         }
     }
@@ -165,9 +347,9 @@ public class ShipNavMeshAI : MonoBehaviour
     public void OrbitTarget(Vector3 targ)
     {
         Vector3 axis = new Vector3(0, 0, 1);
-        transform.RotateAround(targ,axis, Time.deltaTime * Agent.speed * 10f * rotateDir);
+        transform.RotateAround(targ,axis, Time.deltaTime * this.spaceObject.speedStats._Speed * rotateDir);
     }
-
+   
     public void FaceTarget(Vector3 targ)
     {
         Vector2 direction = targ - this.transform.position;
@@ -186,10 +368,12 @@ public class ShipNavMeshAI : MonoBehaviour
     }
     public void RecalculateSystems()
     {
+        Debug.Log("getting systems:" + this.gameObject.name);
         this.WeaponParts.Clear();
         this.DefenseParts.Clear();
         foreach (UniquePart Upart in this.gameObject.GetComponents<UniquePart>())
         {
+            Debug.Log("Part Found" + Upart.name +", Part Cat:" + Upart.Category);
             if (Upart.Category == "Weapon")
             {
                 this.WeaponParts.Add(Upart);
@@ -207,9 +391,11 @@ public class ShipNavMeshAI : MonoBehaviour
         WeaponsActive = true;
         if(this.WeaponParts.Count > 0)
         {
+            int i = 1;
             foreach(UniquePart Upart in this.WeaponParts)
             {
-                Upart.Activate(target);
+                i++;
+                StartCoroutine(StartWithDelay(Upart, i *this.WeaponPartDelay));
             }
         }
     }
@@ -235,7 +421,7 @@ public class ShipNavMeshAI : MonoBehaviour
         {
             foreach (UniquePart Upart in this.DefenseParts)
             {
-                Upart.Activate(target, ThisShip);
+                StartWithDelay(Upart, this.DefensePartDelay);
             }
         }
     }
@@ -266,6 +452,15 @@ public class ShipNavMeshAI : MonoBehaviour
             rotateDir *= -1;
         }
         rotateCRRunning = false;
-
     }
+
+    IEnumerator StartWithDelay(UniquePart part, float delay)
+    {
+        Debug.Log("Started part" + part.name);
+        yield return new WaitForSeconds(delay);
+        part.Activate();
+    }
+
+
+
 }

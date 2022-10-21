@@ -98,18 +98,22 @@ public static class ObjectStatusHandler
     public static void Recalculate(SpeedStat stat)
     {
         stat._Speed = stat._BaseSpeed;
+        stat._TravelRange = stat._BaseTravelRange;
     }
     public static void Recalculate(SpeedStat stat, PermUpgrades permUpgrades)
     {
         stat._Speed = stat._BaseSpeed + permUpgrades.SpeedBonus;
+        stat._TravelRange = stat._BaseTravelRange + permUpgrades.TravelRangeBonus;
     }
     public static void Recalculate(SpeedStat stat, PermUpgrades permUpgrades, UpgradeSlots upgradeSlots)
     {
         stat._Speed = stat._BaseSpeed + permUpgrades.SpeedBonus + upgradeSlots.SpeedBonus;
+        stat._TravelRange = stat._BaseTravelRange + permUpgrades.TravelRangeBonus + upgradeSlots.TravelRangeBonus;
     }
     public static void Recalculate(SpeedStat stat, UpgradeSlots upgradeSlots)
     {
         stat._Speed = stat._BaseSpeed + upgradeSlots.SpeedBonus;
+        stat._TravelRange = stat._BaseTravelRange + upgradeSlots.TravelRangeBonus;
     }
 
     //Cost Handler-------------------------------------------------------------------------------------------------------------------

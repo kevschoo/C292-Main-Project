@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,81 +7,14 @@ using UnityEngine.EventSystems;
 
 
 [DisallowMultipleComponent]
-public class Player : MonoBehaviour
+public abstract class Player : MonoBehaviour
 {
-    [SerializeField] PermUpgrades PlayersPermUpgrade;
+    [field: SerializeField] public abstract PermUpgrades PlayersPermUpgrade { get; set; }
 
-    [SerializeField] List<SpaceObject> PlayerOwnedObjects = new List<SpaceObject>();
-    [SerializeField] Camera MainCam;
-    [SerializeField] GameObject SelectedObject;
-    [SerializeField] int index = 0;
-    [SerializeField] bool FreeCam = false;
-    [SerializeField] bool InMenu = false;
+    [field: SerializeField] public abstract List<SpaceObject> PlayerOwnedObjects { get; set; }
 
-    //listens for invoke(pause)
-    //calls menu closing stuff
+    [field: SerializeField] public abstract GameObject SelectedObject { get; set; }
 
-    void Start()
-    {
-        if (PlayerOwnedObjects.Count > 0)
-        {
-            SelectedObject = PlayerOwnedObjects[0].gameObject;
-            SetAllOwnedObjects();
-        }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 100.0f))
-            {
-                //MainCam.transform.position = new Vector3(hit.point.x, hit.point.y, MainCam.transform.position.z);
-                //Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-
-                Camera.main.transform.position = hit.transform.position;
-            }
-            
-        }
-
-        if (Input.GetButtonDown("Escape") || Input.GetMouseButtonDown(2))
-        {
-            ObjectSelectEvent.InvokeSelectionCleared(this.gameObject);
-            if (InMenu == true)
-            {
-                InMenu = false;
-                GameTime.Resume();
-
-            }
-            else
-            {
-                InMenu = true;
-                GameTime.Pause();
-            }
-        }
-
-
-    }
-
-    void SetAllOwnedObjects()
-    {
-        foreach (SpaceObject obj in this.PlayerOwnedObjects)
-        {
-            obj.SetOwner(this);
-        }
-    }
-    void SetObjectsOwner(SpaceObject obj)
-    {
-        obj.SetOwner(this);
-    }
-
-
-
-
+    [field: SerializeField] public abstract int index { get; set; }
 
 }
