@@ -15,6 +15,7 @@ public class ShipNavMeshAI : ObjectAI
 
     NavMeshAgent Agent;
     [SerializeField] bool AllowTargetChange;
+    [SerializeField] bool GetTargetFromParent;
     [SerializeField] GameObject HomeBase;
     [SerializeField] bool InCombat;
     [SerializeField] int BaseAiType = 0;
@@ -28,7 +29,9 @@ public class ShipNavMeshAI : ObjectAI
 
 
     [SerializeField] List<UniquePart> WeaponParts = new List<UniquePart>();
+    [SerializeField] List<UniquePart> ActiveWeaponParts = new List<UniquePart>();
     [SerializeField] List<UniquePart> DefenseParts = new List<UniquePart>();
+    [SerializeField] List<UniquePart> ActiveDefenseParts = new List<UniquePart>();
     [SerializeField] bool WeaponsActive;
     [SerializeField] bool DefensesActive;
     [SerializeField] bool HasCheckedParts = false;
@@ -54,6 +57,7 @@ public class ShipNavMeshAI : ObjectAI
     // Start is called before the first frame update
     void Start()
     {
+       
         this.RecalculateNVA();
         this.RecalculateSystems();
 
@@ -113,7 +117,8 @@ public class ShipNavMeshAI : ObjectAI
         {
             DistanceThisToTarget = Vector2.Distance(this.gameObject.transform.position, Target.transform.position);
         }
-
+        if(GetTargetFromParent == true)
+        {GetNewTarget();}
         if (AiIsEnabled)
         {
             switch (AiType)
@@ -132,16 +137,42 @@ public class ShipNavMeshAI : ObjectAI
                     break;
                 default:
                     Debug.Log("AI ERROR");
-                    AiType = 0;
+                    AiType = BaseAiType;
+                    if(BaseAiType > 3)
+                    { BaseAiType = 0; }
                     break;
             }
 
         }
         
     }
+    //Ai 2,  3 need to reset weapons upon immediate target acquesiton
+    void GetNewTarget()
+    {
+        if(Target == null)
+        {
+
+
+            if(this.spaceObject.Parent !=  null)
+            {
+                if(this.spaceObject.Parent.GetComponent<Tower>())
+                {
+                    Tower parentTower = this.spaceObject.Parent.GetComponent<Tower>();
+                    if(parentTower.Enemy != null)
+                    {this.Target = parentTower.Enemy; DistanceThisToTarget = Vector2.Distance(this.gameObject.transform.position, Target.transform.position); }
+                }
+                else if (this.spaceObject.Parent.GetComponent<ObjectAI>())
+                {
+                    ObjectAI parentAI = this.spaceObject.Parent.GetComponent<ObjectAI>();
+                    if (parentAI.Target != null)
+                    { this.Target = parentAI.Target; DistanceThisToTarget = Vector2.Distance(this.gameObject.transform.position, Target.transform.position); }
+                }
+            }
+        }
+    }
+
     float DistanceThisToHome;
     float DistanceThisToTarget;
-
     public void ChangeAI(bool value)
     {
         this.AiIsEnabled = value;
@@ -175,6 +206,7 @@ public class ShipNavMeshAI : ObjectAI
         { DeactivateDefenses(); }
 
         MaxDistanceFromHome = 1f;
+
         InCombat = false;
         //if we have no target and at home, afk
         if (IsAtHome)
@@ -213,12 +245,12 @@ public class ShipNavMeshAI : ObjectAI
 
         if(Target == null)
         {
+            if (InCombat)
+            { DeactivateWeapons(); }
             InCombat = false;
             //if we have no target and at home, afk
             if(IsAtHome)
-            {
-                return;
-            }
+            {return;}
             //else go home, lerp around.
             else
             {
@@ -286,12 +318,12 @@ public class ShipNavMeshAI : ObjectAI
 
         if (Target == null)
         {
+            if (InCombat)
+            { DeactivateWeapons(); }
             InCombat = false;
             //if we have no target and at home, afk
             if (IsAtHome)
-            {
-                return;
-            }
+            {return;}
             //else go home, lerp around.
             else
             {
@@ -310,6 +342,8 @@ public class ShipNavMeshAI : ObjectAI
             //if the target is not within travel range from our home and not in our attack range, attempt to move closer
             if (DistanceThisToTarget > AttackRange)
             {
+                if(WeaponsActive)
+                {DeactivateWeapons();}
                 if (DistanceThisToHome < TravelRange)
                 {
                     Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
@@ -327,11 +361,17 @@ public class ShipNavMeshAI : ObjectAI
                 if (!WeaponsActive)
                 { ActivateWeapons(Target); }
                 FaceTarget(Vector3.Lerp(this.transform.position, Target.transform.position, .05f));
-                if(DistanceThisToTarget < 2.5f)
+                if(DistanceThisToTarget < 3.25f)
                 {
                     Agent.SetDestination(this.transform.position);
-                    OrbitTarget(Target.transform.position);
-                    StartCoroutine(CheckIfRotateStuck());
+                    if(allowOrbit)
+                    {
+                        OrbitTarget(Target.transform.position);
+                        if (this.rotateCRRunning == false)
+                        { StartCoroutine(CheckIfRotateStuck()); }
+                    }
+                    
+                    
                 }
                 else
                 {
@@ -365,6 +405,11 @@ public class ShipNavMeshAI : ObjectAI
 
         if (Target == null && this.ObjectiveTarget == null)
         {
+            //Debug.Log("0");
+            //really bad to leave this on but if an enemy dies mid logic cycle, weapons can stay on
+            //this.DeactivateWeapons();
+            if(InCombat)
+            {DeactivateWeapons();}
             InCombat = false;
             Agent.SetDestination(this.transform.position);
         }
@@ -391,7 +436,9 @@ public class ShipNavMeshAI : ObjectAI
             else if (DistanceThisToTarget > AttackRange)
             {
                 //Debug.Log("2");
-                if(ObjectiveTarget != null)
+                if (WeaponsActive)
+                {DeactivateWeapons();}
+                if (ObjectiveTarget != null)
                 {
                     FaceTarget(Vector3.Lerp(this.transform.position, ObjectiveTarget.transform.position, .05f));
                     Agent.SetDestination(ObjectiveTarget.transform.position); 
@@ -407,7 +454,7 @@ public class ShipNavMeshAI : ObjectAI
         }
         else if (Target == null && this.ObjectiveTarget != null)
         {
-            //Debug.Log("3");
+            Debug.Log("3");
             if (Vector2.Distance(ObjectiveTarget.transform.position, this.gameObject.transform.position) < AttackRange)
             {
                 Agent.SetDestination(this.transform.position);

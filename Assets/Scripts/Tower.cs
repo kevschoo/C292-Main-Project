@@ -8,11 +8,12 @@ public class Tower : MonoBehaviour
     [SerializeField] bool IsMouseOver = false;
 
     [field: SerializeField] public GameObject MinionTemplate { get; set; }
+    //Refactor, remove this list, have it so if it doesnt have minionstat, add one to object
     [field: SerializeField] public List<GameObject> MinionsSpawned { get; set; }
     [field: SerializeField] public GameObject Enemy { get; set; }
-    [field: SerializeField] public Transform HomeLocation { get; set; }
     [field: SerializeField] public Player Owner { get; set; }
     [field: SerializeField] public string Team { get; set; }
+    //maybe want to have selector mouse over allow ui overlay
     [SerializeField] SelectableObj Selector;
 
     // Start is called before the first frame update
