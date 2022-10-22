@@ -28,6 +28,8 @@ public class SpaceObject : MonoBehaviour
 
     [field: SerializeField] public string Team { get; set; }
 
+    [field: SerializeField] public GameObject Parent { get; set; }
+
     [field: SerializeField] public Player Owner { get; set; }
 
     [SerializeField] float HealthSpawnMod = 1.0f;
@@ -43,6 +45,7 @@ public class SpaceObject : MonoBehaviour
     [SerializeField] bool canDieAtZero = true;
     [SerializeField] public bool AllowFriendlyFire { get; set; }
 
+    
     private void Awake()
     {
         Debug.Log("Ship Spawned");
@@ -146,12 +149,64 @@ public class SpaceObject : MonoBehaviour
 
         if (defensiveStats._CurrentHealth <= 0)
         {
+            InformParentDeath();
+            InformMinionDeath();
             Destroy(this.gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        ForceDeath();
+    }
+
+    void InformParentDeath()
+    {
+        Debug.Log(this.name + ":Telling parent i died");
+        if (Parent != null)
+        {
+            if(Parent.GetComponent<SpaceObject>() != null)
+            {
+                SpaceObject parentSO = Parent.GetComponent<SpaceObject>();
+                parentSO.MinionDeathListener(this.gameObject);
+            }
+            if (Parent.GetComponent<Tower>() != null)
+            {
+                Tower parentTower = Parent.GetComponent<Tower>();
+                parentTower.MinionDeathListener(this.gameObject);
+            }
+        }   
+    }
+
+    public void MinionDeathListener(GameObject unit)
+    {
+        Debug.Log(this.name + ":Just heard this guy died" + unit.name);
+        if (this.minionStats != null)
+        {
+            minionStats.Minions.Remove(unit);
+            minionStats._CurMinionAmount = minionStats.Minions.Count;
+        }
+    }
+
+    void InformMinionDeath()
+    {
+        Debug.Log(this.name +":Telling minions i died");
+        if(this.minionStats != null)
+        {
+            if(minionStats.Minions.Count != 0)
+            {
+                foreach(GameObject unit in minionStats.Minions)
+                {
+                    Destroy(unit);
+                }
+            }
         }
     }
 
     void ForceDeath()
     {
+        InformParentDeath();
+        InformMinionDeath();
         Destroy(this.gameObject);
     }
 

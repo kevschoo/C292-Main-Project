@@ -43,6 +43,62 @@ public class Tower : MonoBehaviour
 
     }
 
+    public void MinionDeathListener(GameObject unit)
+    {
+        Debug.Log(this.name + ":heard my minions died");
+        if (this.MinionsSpawned.Count != 0)
+        {
+            MinionsSpawned.Remove(unit);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log(this.name + ":Telling minions i died");
+        if (this.gameObject.GetComponent<SpaceObject>() == null)
+        {
+            foreach(GameObject unit in this.MinionsSpawned)
+            {
+                Destroy(unit);
+            }
+        }
+    }
+
+    public void Spawn()
+    {
+        if(MinionTemplate == null)
+        {
+            Debug.Log("No Minion Template");
+            return;
+        }
+        if(this.gameObject.GetComponent<MinionStat>() != null)
+        {
+            MinionStat min = this.gameObject.GetComponent<MinionStat>();
+            if(min._CurMinionAmount < min._MaxMinionAmount)
+            {
+                min._CurMinionAmount++;
+                GameObject newUnit = Instantiate(this.MinionTemplate, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+                SpaceObject NUSO = newUnit.GetComponent<SpaceObject>();
+                NUSO.SetOwner(this.Owner);
+                NUSO.SetTeam(this.Team);
+                NUSO.Parent = this.gameObject;
+                this.MinionsSpawned.Add(newUnit);
+                min.Minions.Add(newUnit);
+            }
+        }
+        else
+        {
+            if(MinionsSpawned.Count == 0)
+            {
+                GameObject newUnit = Instantiate(this.MinionTemplate, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+                SpaceObject NUSO = newUnit.GetComponent<SpaceObject>();
+                NUSO.SetOwner(this.Owner);
+                NUSO.SetTeam(this.Team);
+                NUSO.Parent = this.gameObject;
+                this.MinionsSpawned.Add(newUnit);
+            }
+        }
+    }
     void OnMouseOver()
     {
         //Debug.Log("MouseOver Tower");

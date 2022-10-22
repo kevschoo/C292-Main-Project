@@ -103,11 +103,15 @@ public class ShipNavMeshAI : ObjectAI
     // Update is called once per frame
     void Update()
     {
-        DistanceThisToHome = Vector2.Distance(this.gameObject.transform.position, HomeBase.transform.position);
+        if (HomeBase != null)
+        { DistanceThisToHome = Vector2.Distance(this.gameObject.transform.position, HomeBase.transform.position); }
+        if (HomeBase == null)
+        {
+            HomeBase = this.gameObject;
+        }
         if(Target != null)
         {
             DistanceThisToTarget = Vector2.Distance(this.gameObject.transform.position, Target.transform.position);
-            DistanceHomeToTarget = Vector2.Distance(Target.transform.position, HomeBase.transform.position);
         }
 
         if (AiIsEnabled)
@@ -137,7 +141,6 @@ public class ShipNavMeshAI : ObjectAI
     }
     float DistanceThisToHome;
     float DistanceThisToTarget;
-    float DistanceHomeToTarget;
 
     public void ChangeAI(bool value)
     {

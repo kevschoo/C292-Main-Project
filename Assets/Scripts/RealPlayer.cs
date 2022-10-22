@@ -65,7 +65,7 @@ public class RealPlayer : Player
             if (SelectedObject == null)
             {
                 //Camera.main.transform.position = new Vector3(SelectedObject.transform.position.x, SelectedObject.transform.position.y, -20);
-                Vector3 SmoothPos = Vector3.Lerp(MainCam.transform.position, this.transform.position, .05f);
+                Vector3 SmoothPos = Vector3.Lerp(MainCam.transform.position, new Vector3(this.transform.position.x, this.transform.position.y, -20), .05f);
                 Camera.main.transform.position = SmoothPos;
             }
             else

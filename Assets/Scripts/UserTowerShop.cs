@@ -35,6 +35,15 @@ public class UserTowerShop : MonoBehaviour
         }
     }
 
+    public void CallSpawnMinion()
+    {
+        
+        if (SelectedObject.GetComponent<Tower>() != null)
+        {
+            Tower tower = SelectedObject.GetComponent<Tower>();
+            tower.Spawn();
+        }
+    }
     void ShowSelectedTowerShop(object sender, ObjectSelectEventArgs args)
     {
         
