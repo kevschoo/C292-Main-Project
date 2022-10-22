@@ -103,14 +103,18 @@ public class UserShipShop : MonoBehaviour
             }
             if (spaceObj.upgradeSlots != null)
             {
+                Debug.Log("UpSlots: " + spaceObj.upgradeSlots.ChosenParts.Count);
                 this.ShipInfoText.text += "Upgrades: ";
                 foreach(ShipPart part in spaceObj.upgradeSlots.ChosenParts)
                 {
+                    
                     this.ShipInfoText.text += part.name + ",";
                 }
                 this.ShipInfoText.text += "<br>";
+                Debug.Log("UParts: " + spaceObj.upgradeSlots.UniqueParts.Count);
                 foreach (UniquePart part in spaceObj.upgradeSlots.UniqueParts)
                 {
+                 
                     this.ShipInfoText.text += part.PartName + ",";
                 }
                 this.ShipInfoText.text += "<br>";

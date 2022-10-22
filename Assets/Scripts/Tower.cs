@@ -7,14 +7,12 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] bool IsMouseOver = false;
 
-    [SerializeField] GameObject MinionTemplate;
-    [SerializeField] GameObject MinionSpawned;
-
-    [SerializeField] GameObject Enemy;
-
-    [SerializeField] Transform HomeLocation;
-    [SerializeField] Player Owner;
-    [SerializeField] string Team;
+    [field: SerializeField] public GameObject MinionTemplate { get; set; }
+    [field: SerializeField] public List<GameObject> MinionsSpawned { get; set; }
+    [field: SerializeField] public GameObject Enemy { get; set; }
+    [field: SerializeField] public Transform HomeLocation { get; set; }
+    [field: SerializeField] public Player Owner { get; set; }
+    [field: SerializeField] public string Team { get; set; }
     [SerializeField] SelectableObj Selector;
 
     // Start is called before the first frame update
@@ -30,7 +28,7 @@ public class Tower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(MinionSpawned != null)
+        if(MinionsSpawned.Count != 0)
         {
             ActivateTower();
         }
@@ -38,10 +36,11 @@ public class Tower : MonoBehaviour
 
     void ActivateTower()
     {
-        if(Enemy != null)
+        if(Enemy == null)
         {
-
+            return;
         }
+
     }
 
     void OnMouseOver()
