@@ -151,8 +151,6 @@ public class ShipNavMeshAI : ObjectAI
     {
         if(Target == null)
         {
-
-
             if(this.spaceObject.Parent !=  null)
             {
                 if(this.spaceObject.Parent.GetComponent<Tower>())
@@ -182,7 +180,7 @@ public class ShipNavMeshAI : ObjectAI
     public void ChangeAIStatus(int value)
     {
         this.AiType = value;
-        MaxDistanceFromHome = .1f;
+        MaxDistanceFromHome = .25f;
         this.DeactivateDefenses();
         this.DeactivateWeapons();
     }
@@ -200,9 +198,9 @@ public class ShipNavMeshAI : ObjectAI
         { return; }
 
         //Deactivate Weapons and defense when not in combat
-        if (!InCombat && WeaponsActive)
+        if (!InCombat && ActiveWeaponParts.Count > 0)
         { DeactivateWeapons(); }
-        if (!InCombat && DefensesActive)
+        if (!InCombat && ActiveDefenseParts.Count > 0)
         { DeactivateDefenses(); }
 
         MaxDistanceFromHome = 1f;
@@ -245,7 +243,7 @@ public class ShipNavMeshAI : ObjectAI
 
         if(Target == null)
         {
-            if (InCombat)
+            if (ActiveWeaponParts.Count > 0)
             { DeactivateWeapons(); }
             InCombat = false;
             //if we have no target and at home, afk
@@ -318,7 +316,7 @@ public class ShipNavMeshAI : ObjectAI
 
         if (Target == null)
         {
-            if (InCombat)
+            if (ActiveWeaponParts.Count > 0)
             { DeactivateWeapons(); }
             InCombat = false;
             //if we have no target and at home, afk
@@ -342,8 +340,8 @@ public class ShipNavMeshAI : ObjectAI
             //if the target is not within travel range from our home and not in our attack range, attempt to move closer
             if (DistanceThisToTarget > AttackRange)
             {
-                if(WeaponsActive)
-                {DeactivateWeapons();}
+                if (ActiveWeaponParts.Count > 0)
+                { DeactivateWeapons(); }
                 if (DistanceThisToHome < TravelRange)
                 {
                     Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
@@ -408,7 +406,7 @@ public class ShipNavMeshAI : ObjectAI
             //Debug.Log("0");
             //really bad to leave this on but if an enemy dies mid logic cycle, weapons can stay on
             //this.DeactivateWeapons();
-            if(InCombat)
+            if(ActiveWeaponParts.Count > 0)
             {DeactivateWeapons();}
             InCombat = false;
             Agent.SetDestination(this.transform.position);
@@ -520,6 +518,7 @@ public class ShipNavMeshAI : ObjectAI
             foreach(UniquePart Upart in this.WeaponParts)
             {
                 i++;
+                this.ActiveWeaponParts.Add(Upart);
                 StartCoroutine(StartWithDelay(Upart, i *this.WeaponPartDelay));
             }
         }
@@ -531,9 +530,10 @@ public class ShipNavMeshAI : ObjectAI
         WeaponsActive = false;
         if (this.WeaponParts.Count > 0)
         {
-            foreach (UniquePart Upart in this.WeaponParts)
+            foreach (UniquePart Upart in this.ActiveWeaponParts)
             {
                 Upart.DeActivate();
+                ActiveWeaponParts.Remove(Upart);
             }
         }
     }
@@ -546,6 +546,7 @@ public class ShipNavMeshAI : ObjectAI
         {
             foreach (UniquePart Upart in this.DefenseParts)
             {
+                ActiveDefenseParts.Add(Upart);
                 StartWithDelay(Upart, this.DefensePartDelay);
             }
         }
@@ -557,9 +558,10 @@ public class ShipNavMeshAI : ObjectAI
         DefensesActive = false;
         if (this.DefenseParts.Count > 0)
         {
-            foreach (UniquePart Upart in this.DefenseParts)
+            foreach (UniquePart Upart in this.ActiveDefenseParts)
             {
                 Upart.DeActivate();
+                ActiveDefenseParts.Remove(Upart);
             }
         }
     }
