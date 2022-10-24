@@ -81,19 +81,14 @@ public class RealPlayer : Player
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetButton("Shift"))
         {
-            /*
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 100.0f))
-            {
-                //MainCam.transform.position = new Vector3(hit.point.x, hit.point.y, MainCam.transform.position.z);
-                //Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-
-                Camera.main.transform.position = hit.transform.position;
-            }
-            */
+            float minSize = 1f;
+            float maxSize = 20f;
+            float CameraSize = Camera.main.orthographicSize;
+            CameraSize += Input.GetAxis("Mouse ScrollWheel") * -10f;
+            CameraSize = Mathf.Clamp(CameraSize, minSize, maxSize);
+            Camera.main.orthographicSize = CameraSize;
         }
 
         if (Input.GetButtonDown("Escape") || Input.GetMouseButtonDown(2))

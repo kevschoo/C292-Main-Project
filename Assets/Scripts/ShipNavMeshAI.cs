@@ -212,15 +212,15 @@ public class ShipNavMeshAI : ObjectAI
         {
             Agent.SetDestination(this.transform.position);
             OrbitTarget(HomeBase.transform.position);
-            FaceTarget(Vector3.Lerp(this.transform.position, this.HomeBase.transform.position, .05f));
+            FaceTarget(Vector2.Lerp(this.transform.position, this.HomeBase.transform.position, .05f));
             return;
         }
         //else go home, lerp around.
         else
         {
             Agent.SetDestination(HomeBase.transform.position);
-            Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
-            FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
+            Vector2 PosToLook = new Vector2(Agent.nextPosition[0], Agent.nextPosition[0]);
+            FaceTarget(Vector2.Lerp(this.transform.position, PosToLook, .05f));
         }
     }
     //This AI will move closer until in range then fire, then go home
@@ -254,8 +254,8 @@ public class ShipNavMeshAI : ObjectAI
             else
             {
                 Agent.SetDestination(HomeBase.transform.position);
-                Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
-                FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
+                Vector2 PosToLook = new Vector2(Agent.nextPosition[0], Agent.nextPosition[0]);
+                FaceTarget(Vector2.Lerp(this.transform.position, PosToLook, .05f));
             }
         }
 
@@ -270,8 +270,8 @@ public class ShipNavMeshAI : ObjectAI
             {
                 if(DistanceThisToHome < TravelRange)
                 {
-                    Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
-                    FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .05f));
+                    Vector2 PosToLook = new Vector2(Agent.nextPosition[0], Agent.nextPosition[0]);
+                    FaceTarget(Vector2.Lerp(this.transform.position, PosToLook, .05f));
                     Agent.SetDestination(Target.transform.position);
                 }
                 else
@@ -284,7 +284,7 @@ public class ShipNavMeshAI : ObjectAI
             {
                 if(!WeaponsActive)
                 { ActivateWeapons(Target); }
-                FaceTarget(Vector3.Lerp(this.transform.position, Target.transform.position, .05f));
+                FaceTarget(Vector2.Lerp(this.transform.position, Target.transform.position, .05f));
                 Agent.SetDestination(this.transform.position);
 
             }
@@ -327,8 +327,8 @@ public class ShipNavMeshAI : ObjectAI
             else
             {
                 Agent.SetDestination(HomeBase.transform.position);
-                Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
-                FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .1f));
+                Vector2 PosToLook = new Vector2(Agent.nextPosition[0], Agent.nextPosition[0]);
+                FaceTarget(Vector2.Lerp(this.transform.position, PosToLook, .1f));
             }
         }
 
@@ -345,8 +345,8 @@ public class ShipNavMeshAI : ObjectAI
                 { DeactivateWeapons(); }
                 if (DistanceThisToHome < TravelRange)
                 {
-                    Vector3 PosToLook = new Vector3(Agent.nextPosition[0], Agent.nextPosition[0], 0);
-                    FaceTarget(Vector3.Lerp(this.transform.position, PosToLook, .1f));
+                    Vector2 PosToLook = new Vector2(Agent.nextPosition[0], Agent.nextPosition[0]);
+                    FaceTarget(Vector2.Lerp(this.transform.position, PosToLook, .1f));
                     Agent.SetDestination(Target.transform.position);
                 }
                 else
@@ -359,7 +359,7 @@ public class ShipNavMeshAI : ObjectAI
             {
                 if (!WeaponsActive)
                 { ActivateWeapons(Target); }
-                FaceTarget(Vector3.Lerp(this.transform.position, Target.transform.position, .05f));
+                FaceTarget(Vector2.Lerp(this.transform.position, Target.transform.position, .05f));
                 if(DistanceThisToTarget < 3.25f)
                 {
                     Agent.SetDestination(this.transform.position);
@@ -425,7 +425,7 @@ public class ShipNavMeshAI : ObjectAI
                 //Debug.Log("1");
                 if (!WeaponsActive)
                 { ActivateWeapons(Target); }
-                FaceTarget(Vector3.Lerp(this.transform.position, Target.transform.position, .05f));
+                FaceTarget(Vector2.Lerp(this.transform.position, Target.transform.position, .05f));
                 if (ObjectiveTarget == Target)
                 { Agent.SetDestination(this.transform.position); }
                 else if(ObjectiveTarget != null)
@@ -441,7 +441,7 @@ public class ShipNavMeshAI : ObjectAI
                 { DeactivateWeapons();}
                 if (ObjectiveTarget != null)
                 {
-                    FaceTarget(Vector3.Lerp(this.transform.position, ObjectiveTarget.transform.position, .05f));
+                    FaceTarget(Vector2.Lerp(this.transform.position, ObjectiveTarget.transform.position, .05f));
                     Agent.SetDestination(ObjectiveTarget.transform.position); 
                 }
                 else
@@ -463,7 +463,7 @@ public class ShipNavMeshAI : ObjectAI
             }
             else
             {
-                FaceTarget(Vector3.Lerp(this.transform.position, ObjectiveTarget.transform.position, .05f));
+                FaceTarget(Vector2.Lerp(this.transform.position, ObjectiveTarget.transform.position, .05f));
                 Agent.SetDestination(ObjectiveTarget.transform.position);
             }
         
@@ -573,11 +573,11 @@ public class ShipNavMeshAI : ObjectAI
     IEnumerator CheckIfRotateStuck()
     {
         rotateCRRunning = true;
-        Vector3 prevPos = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+        Vector2 prevPos = new Vector2(this.transform.position.x, this.transform.position.y);
         yield return new WaitForSeconds(.5f);
         //Debug.Log("start corotuine");
-        Vector3 newPos = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-        if(Vector3.Distance(prevPos,newPos) < .1f)
+        Vector2 newPos = new Vector2(this.transform.position.x, this.transform.position.y);
+        if(Vector2.Distance(prevPos,newPos) < .1f)
         {
             rotateDir *= -1;
         }

@@ -85,17 +85,17 @@ public class UserShipShop : MonoBehaviour
             {this.ShipInfoText.text += "<br>";}
             if (spaceObj.costStats != null)
             {
-                this.ShipInfoText.text += "Cost: " + spaceObj.costStats._Cost + "| Upkeep: " + spaceObj.costStats._Upkeep+ " Per " + spaceObj.costStats._UpKeepCooldown + " Seconds" + "<br>";
+                this.ShipInfoText.text += "Cost: " + spaceObj.costStats._Cost + " | Upkeep: " + spaceObj.costStats._Upkeep+ " Per " + spaceObj.costStats._UpKeepCooldown + " Seconds" + "<br>";
             }
             if (spaceObj.defensiveStats != null)
             {
                 this.ShipInfoText.text += "Hp: " + spaceObj.defensiveStats._CurrentHealth + "/" + spaceObj.defensiveStats._MaxHealth  +" | Regen: " + spaceObj.defensiveStats._HealthRegen + " Per " + (spaceObj.HealthRegenMod * 1) + " Seconds" +"<br>";
-                this.ShipInfoText.text += "Def: " + spaceObj.defensiveStats._Defense + "| DmgDwn: " + spaceObj.defensiveStats._DamageReduction + "<br>";
+                this.ShipInfoText.text += "Def: " + spaceObj.defensiveStats._Defense + " | DmgDwn: " + spaceObj.defensiveStats._DamageReduction + "<br>";
             }
             if (spaceObj.offensiveStats != null)
             {
-                this.ShipInfoText.text += "Dmg: " + spaceObj.offensiveStats._Damage + "| Range:" + spaceObj.offensiveStats._AttackRange + "| ASpd:" + spaceObj.offensiveStats._AttackSpeed + "<br>";
-                this.ShipInfoText.text += "Pen: " + spaceObj.offensiveStats._Penetration + "| DmgUp: " + spaceObj.offensiveStats._DamageIncrease + "<br>";
+                this.ShipInfoText.text += "Dmg: " + spaceObj.offensiveStats._Damage + " | Range:" + spaceObj.offensiveStats._AttackRange + " | ASpd:" + spaceObj.offensiveStats._AttackSpeed + "<br>";
+                this.ShipInfoText.text += "Pen: " + spaceObj.offensiveStats._Penetration + " | DmgUp: " + spaceObj.offensiveStats._DamageIncrease + "<br>";
             }
             if (spaceObj.speedStats != null)
             {
@@ -103,15 +103,16 @@ public class UserShipShop : MonoBehaviour
             }
             if (spaceObj.upgradeSlots != null)
             {
-                Debug.Log("UpSlots: " + spaceObj.upgradeSlots.ChosenParts.Count);
-                this.ShipInfoText.text += "Upgrades: ";
+                //this.ShipInfoText.text += spaceObj.upgradeSlots.CurShipParts + "/" + spaceObj.upgradeSlots.MaxShipParts;
+                //Debug.Log("UpSlots: " + spaceObj.upgradeSlots.ChosenParts.Count);
+                this.ShipInfoText.text += spaceObj.upgradeSlots.CurShipParts + "/" + spaceObj.upgradeSlots.MaxShipParts + " Upgrades: ";
                 foreach(ShipPart part in spaceObj.upgradeSlots.ChosenParts)
                 {
                     
                     this.ShipInfoText.text += part.name + ",";
                 }
                 this.ShipInfoText.text += "<br>";
-                Debug.Log("UParts: " + spaceObj.upgradeSlots.UniqueParts.Count);
+                //Debug.Log("UParts: " + spaceObj.upgradeSlots.UniqueParts.Count);
                 foreach (UniquePart part in spaceObj.upgradeSlots.UniqueParts)
                 {
                  

@@ -90,17 +90,17 @@ public class UserTowerShop : MonoBehaviour
             { this.TowerInfoText.text += "No Team<br>"; }
             if (spaceObj.costStats != null)
             {
-                this.TowerInfoText.text += "Cost: " + spaceObj.costStats._Cost + "| Upkeep: " + spaceObj.costStats._Upkeep + " Per " + spaceObj.costStats._UpKeepCooldown + " Seconds" + "<br>";
+                this.TowerInfoText.text += "Cost: " + spaceObj.costStats._Cost + " | Upkeep: " + spaceObj.costStats._Upkeep + " Per " + spaceObj.costStats._UpKeepCooldown + " Seconds" + "<br>";
             }
             if (spaceObj.defensiveStats != null)
             {
                 this.TowerInfoText.text += "Hp: " + spaceObj.defensiveStats._CurrentHealth + "/" + spaceObj.defensiveStats._MaxHealth + " | Regen: " + spaceObj.defensiveStats._HealthRegen + " Per " + (spaceObj.HealthRegenMod * 1) + " Seconds" + "<br>";
-                this.TowerInfoText.text += "Def: " + spaceObj.defensiveStats._Defense + "| DmgDwn: " + spaceObj.defensiveStats._DamageReduction + "<br>";
+                this.TowerInfoText.text += "Def: " + spaceObj.defensiveStats._Defense + " | DmgDwn: " + spaceObj.defensiveStats._DamageReduction + "<br>";
             }
             if (spaceObj.offensiveStats != null)
             {
-                this.TowerInfoText.text += "Dmg: " + spaceObj.offensiveStats._Damage + "| Range:" + spaceObj.offensiveStats._AttackRange + "| ASpd:" + spaceObj.offensiveStats._AttackSpeed + "<br>";
-                this.TowerInfoText.text += "Pen: " + spaceObj.offensiveStats._Penetration + "| DmgUp: " + spaceObj.offensiveStats._DamageIncrease + "<br>";
+                this.TowerInfoText.text += "Dmg: " + spaceObj.offensiveStats._Damage + " | Range:" + spaceObj.offensiveStats._AttackRange + " | ASpd:" + spaceObj.offensiveStats._AttackSpeed + "<br>";
+                this.TowerInfoText.text += "Pen: " + spaceObj.offensiveStats._Penetration + " | DmgUp: " + spaceObj.offensiveStats._DamageIncrease + "<br>";
             }
             if (spaceObj.speedStats != null)
             {
@@ -108,7 +108,8 @@ public class UserTowerShop : MonoBehaviour
             }
             if (spaceObj.upgradeSlots != null)
             {
-                this.TowerInfoText.text += "Upgrades: ";
+                //this.TowerInfoText.text += spaceObj.upgradeSlots.CurShipParts +"/" +spaceObj.upgradeSlots.MaxShipParts;
+                this.TowerInfoText.text += spaceObj.upgradeSlots.CurShipParts + "/" + spaceObj.upgradeSlots.MaxShipParts +" Upgrades: ";
                 foreach (ShipPart part in spaceObj.upgradeSlots.ChosenParts)
                 {
                     this.TowerInfoText.text += part.name + ",";
