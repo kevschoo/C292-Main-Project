@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -397,7 +398,7 @@ public class ShipNavMeshAI : ObjectAI
 
         //Deactivate Weapons and defense when not in combat
         if (!InCombat && WeaponsActive)
-        { DeactivateWeapons(); }
+        {DeactivateWeapons(); }
         if (!InCombat && DefensesActive)
         { DeactivateDefenses(); }
 
@@ -406,8 +407,10 @@ public class ShipNavMeshAI : ObjectAI
             //Debug.Log("0");
             //really bad to leave this on but if an enemy dies mid logic cycle, weapons can stay on
             //this.DeactivateWeapons();
-            if(ActiveWeaponParts.Count > 0)
+
+            if (ActiveWeaponParts.Count > 0)
             {DeactivateWeapons();}
+
             InCombat = false;
             Agent.SetDestination(this.transform.position);
         }
@@ -435,7 +438,7 @@ public class ShipNavMeshAI : ObjectAI
             {
                 //Debug.Log("2");
                 if (WeaponsActive)
-                {DeactivateWeapons();}
+                { DeactivateWeapons();}
                 if (ObjectiveTarget != null)
                 {
                     FaceTarget(Vector3.Lerp(this.transform.position, ObjectiveTarget.transform.position, .05f));
@@ -452,7 +455,7 @@ public class ShipNavMeshAI : ObjectAI
         }
         else if (Target == null && this.ObjectiveTarget != null)
         {
-            Debug.Log("3");
+            //Debug.Log("3");
             if (Vector2.Distance(ObjectiveTarget.transform.position, this.gameObject.transform.position) < AttackRange)
             {
                 Agent.SetDestination(this.transform.position);
@@ -533,8 +536,8 @@ public class ShipNavMeshAI : ObjectAI
             foreach (UniquePart Upart in this.ActiveWeaponParts)
             {
                 Upart.DeActivate();
-                ActiveWeaponParts.Remove(Upart);
             }
+            ActiveWeaponParts.Clear();
         }
     }
 
@@ -561,8 +564,8 @@ public class ShipNavMeshAI : ObjectAI
             foreach (UniquePart Upart in this.ActiveDefenseParts)
             {
                 Upart.DeActivate();
-                ActiveDefenseParts.Remove(Upart);
             }
+            ActiveDefenseParts.Clear();
         }
     }
 

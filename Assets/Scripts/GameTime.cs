@@ -35,15 +35,17 @@ public static class GameTime
 
     public static void DecreaseTime()
     {
-        float newTime = Time.timeScale - 0.25f;
+        float newTime = Time.timeScale - 0.1f;
         if (newTime < 0)
         {Time.timeScale = 0;}
-        Time.timeScale = newTime;
+        else
+        {Time.timeScale = newTime;}
+
     }
 
     public static void IncreaseTime()
     {
-        float newTime = Time.timeScale + 0.25f;
+        float newTime = Time.timeScale + 0.1f;
         if (newTime < 0)
         {Time.timeScale = 0;}
         Time.timeScale = newTime;

@@ -32,5 +32,15 @@ public class LevelMap : MonoBehaviour
         { Level = this;}
     }
 
+    void LoadLevelData(LevelRunTimeData LRTData)
+    {
+        this.LevelName = LRTData.LevelName;
+        this.LevelDifficulty = LRTData.LevelDifficulty;
+        this.LevelDescription = LRTData.LevelDescription;
+        this.CurrentWaveNumber = LRTData.CurrentWaveNumber;
+        this.LastWaveNumber = LRTData.LastWaveNumber;
+        this.SurvivalTimeLength = LRTData.SurvivalTimeLength;
+        this.isWaveActive = LRTData.isWaveActive;
+    }
     
 }

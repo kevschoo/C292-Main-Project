@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] bool IsMouseOver = false;
 
     [field: SerializeField] public GameObject MinionTemplate { get; set; }
     //Refactor, remove this list, have it so if it doesnt have minionstat, add one to object

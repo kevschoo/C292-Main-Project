@@ -13,7 +13,7 @@ public class RealPlayer : Player
     [SerializeField] Camera MainCam;
 
     [SerializeField] bool InMenu = false;
-
+    [SerializeField] bool PauseInMenu = false;
 
     //listens for invoke(pause)
     //calls menu closing stuff
@@ -100,19 +100,19 @@ public class RealPlayer : Player
         {
             Debug.Log("Player calling clear");
             ObjectSelectEvent.InvokeSelectionCleared();
-            /*
-            if (InMenu == true)
+            
+            if (InMenu == true && PauseInMenu == true)
             {
                 InMenu = false;
                 GameTime.Resume();
 
             }
-            else
+            else if (InMenu == false && PauseInMenu == true)
             {
                 InMenu = true;
                 GameTime.Pause();
             }
-            */
+            
         }
         if (Input.GetMouseButtonUp(1))
         {
@@ -122,6 +122,26 @@ public class RealPlayer : Player
             }
             Vector3 convertpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector3(convertpos.x, convertpos.y, -20);
+        }
+        if (Input.GetButtonDown("TimeSpeedUp"))
+        {
+            GameTime.IncreaseTime();
+        }
+        if (Input.GetButtonDown("TimeSpeedDown"))
+        {
+            GameTime.DecreaseTime();
+        }
+        if (Input.GetButtonDown("TimePause"))
+        {
+            if(GameTime.IsPaused())
+            {
+                GameTime.Resume();
+            }
+            else
+            {
+                GameTime.Pause();
+            }
+            
         }
     }
 
