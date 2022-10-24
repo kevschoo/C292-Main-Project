@@ -66,6 +66,7 @@ public class Tower : MonoBehaviour
         if (this.MinionsSpawned.Count != 0)
         {
             MinionsSpawned.Remove(unit);
+            Spawn();
         }
     }
 
@@ -99,6 +100,11 @@ public class Tower : MonoBehaviour
                 NUSO.SetOwner(this.Owner);
                 NUSO.SetTeam(this.Team);
                 NUSO.Parent = this.gameObject;
+                if( newUnit.GetComponent<ShipNavMeshAI>())
+                {
+                    ShipNavMeshAI NUSOAI = newUnit.GetComponent<ShipNavMeshAI>();
+                    NUSOAI.SetHome(this.gameObject);
+                }
                 this.MinionsSpawned.Add(newUnit);
                 min.Minions.Add(newUnit);
             }
