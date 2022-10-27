@@ -19,7 +19,7 @@ MonoBehaviour:
   <DamageBonus>k__BackingField: 10
   <PenetrationBonus>k__BackingField: 10
   <DamageIncreaseBonus>k__BackingField: 10
-  <AttackRangeBonus>k__BackingField: 5
+  <AttackRangeBonus>k__BackingField: 0
   <AttackSpeedBonus>k__BackingField: 1.1
   <SpeedBonus>k__BackingField: 5
   <TravelRangeBonus>k__BackingField: 5

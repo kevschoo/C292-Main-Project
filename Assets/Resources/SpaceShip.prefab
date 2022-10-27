@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5ff392da15d0043a3e7b4e0c134e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <_BaseSpeed>k__BackingField: 1
+  <_BaseSpeed>k__BackingField: 2
   <_BaseTravelRange>k__BackingField: 25
   <_Speed>k__BackingField: 0
   <_TravelRange>k__BackingField: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <_BaseCost>k__BackingField: 100
-  <_Cost>k__BackingField: 0
+  <_Cost>k__BackingField: 100
   <_BaseUpkeep>k__BackingField: 10
   <_Upkeep>k__BackingField: 0
   <_HasUpkeepCosts>k__BackingField: 0
@@ -386,7 +386,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 654d927b89210d948b418cd5280ebe59, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96fa95e73c0922643ad38e8be354628f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

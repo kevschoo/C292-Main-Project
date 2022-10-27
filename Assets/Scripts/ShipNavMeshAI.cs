@@ -360,7 +360,7 @@ public class ShipNavMeshAI : ObjectAI
                 if (!WeaponsActive)
                 { ActivateWeapons(Target); }
                 FaceTarget(Vector2.Lerp(this.transform.position, Target.transform.position, .05f));
-                if(DistanceThisToTarget < 3.25f)
+                if(DistanceThisToTarget < 3.5f)
                 {
                     Agent.SetDestination(this.transform.position);
                     if(allowOrbit)

@@ -27,14 +27,7 @@ public class UserShipShop : MonoBehaviour
         ObjectSelectEvent.SelectionCleared -= OnClearedSelect;
         ObjectSelectEvent.SelectionChanged -= ShowSelectedShipShop;
     }
-    // Update is called once per frame
-    void Update()
-    {
-        if (SelectedObject == null)
-        {
-            ShipText.text = "Select A Space Ship";
-        }
-    }
+
 
     void ShowSelectedShipShop(object sender, ObjectSelectEventArgs args)
     {

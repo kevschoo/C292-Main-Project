@@ -8,7 +8,6 @@ public class Tower : MonoBehaviour
 {
 
     [field: SerializeField] public GameObject MinionTemplate { get; set; }
-
     [field: SerializeField] public GameObject TestObject { get; set; }
     //Refactor, remove this list, have it so if it doesnt have minionstat, add one to object
     [field: SerializeField] public List<GameObject> MinionsSpawned { get; set; }
@@ -157,6 +156,8 @@ public class Tower : MonoBehaviour
             }
         }
     }
+
+    /*
     void OnMouseOver()
     {
         //Debug.Log("MouseOver Tower");
@@ -171,6 +172,6 @@ public class Tower : MonoBehaviour
     {
         Debug.Log("Mouse Exit Tower");
     }
-
+    */
 
 }

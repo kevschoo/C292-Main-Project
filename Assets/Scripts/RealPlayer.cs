@@ -7,8 +7,11 @@ public class RealPlayer : Player
 {
     [field: SerializeField] public override PermUpgrades PlayersPermUpgrade { get; set; }
     [field: SerializeField] public override List<SpaceObject> PlayerOwnedObjects { get; set; }
+    [field: SerializeField] public override List<Tower> PlayerAvaliableTowers { get; set; }
+    [field: SerializeField] public override List<SpaceObject> PlayerAvaliableShips { get; set; }
     [field: SerializeField] public override GameObject SelectedObject { get; set; }
-    [field: SerializeField] public override int index { get; set; }
+    [field: SerializeField] public override int Index { get; set; }
+    [field: SerializeField] public override int Money { get; set; }
 
     [SerializeField] Camera MainCam;
 
@@ -23,7 +26,7 @@ public class RealPlayer : Player
         {
             PlayerOwnedObjects = new List<SpaceObject>();
         }
-        index = 0;
+        Index = 0;
         this.SelectedObject = this.gameObject;
         this.MainCam = Camera.main;
         ObjectSelectEvent.SelectionCleared += OnClearedSelect;

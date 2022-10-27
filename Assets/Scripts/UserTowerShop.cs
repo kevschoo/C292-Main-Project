@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class UserTowerShop : MonoBehaviour
 {
@@ -13,6 +16,11 @@ public class UserTowerShop : MonoBehaviour
     [SerializeField] TextMeshProUGUI TowerText;
     [SerializeField] TextMeshProUGUI TowerInfoText;
     [SerializeField] GameObject SelectedObject;
+
+    [SerializeField] TMP_Dropdown DropDownList;
+    [SerializeField] TextMeshProUGUI TowerCostInfo;
+
+    List<string> PlayerTowers = new List<string>();
 
     // Start is called before the first frame update
     void Start()
@@ -26,14 +34,6 @@ public class UserTowerShop : MonoBehaviour
         ObjectSelectEvent.SelectionCleared -= OnClearedSelect;
         ObjectSelectEvent.SelectionChanged -= ShowSelectedTowerShop;
     }
-    // Update is called once per frame
-    void Update()
-    {
-        if(SelectedObject == null)
-        {
-            TowerText.text = "Select A Tower";
-        }
-    }
 
     public void CallSpawnMinion()
     {
@@ -42,6 +42,116 @@ public class UserTowerShop : MonoBehaviour
         {
             Tower tower = SelectedObject.GetComponent<Tower>();
             tower.Spawn();
+        }
+    }
+
+    public void SetDropdownTowers(Player Player)
+    {
+        Debug.Log("Setting List");
+        DropDownList.ClearOptions();
+        PlayerTowers.Clear(); 
+       
+        for(int i = 0; i < Player.PlayerAvaliableShips.Count; i++)
+        {
+            Debug.Log("Loaded Ship:" + Player.PlayerAvaliableShips[i].gameObject.name);
+            PlayerTowers.Add(Player.PlayerAvaliableShips[i].gameObject.name);
+        }
+        DropDownList.AddOptions(PlayerTowers);
+        
+    }
+
+
+    GameObject GetPlayerShip(Player Player, int ShipIndex)
+    {
+        Debug.Log("Load Ships");
+        if (Player.PlayerAvaliableShips.Count == 0)
+        {return null;}
+        if (ShipIndex > Player.PlayerAvaliableShips.Count)
+        {return null;}
+        if (ShipIndex < 0)
+        {return null;}
+        GameObject SelectedShip;
+        SelectedShip = Player.PlayerAvaliableShips[ShipIndex].gameObject;
+        return SelectedShip;
+    }
+
+    public void LoadTower()
+    {
+        Debug.Log("Tower Load");
+        if (SelectedObject.GetComponent<Tower>() != null)
+        {
+            Tower tower = SelectedObject.GetComponent<Tower>();
+            Player Buyer = tower.Owner;
+            Debug.Log("TowerOwner: " + tower.Owner.name);
+            SetDropdownTowers(Buyer);
+        }
+    }
+    public void BuyTower()
+    {
+        Debug.Log("Tower Buy");
+        if (SelectedObject.GetComponent<Tower>() != null)
+        {
+            Tower tower = SelectedObject.GetComponent<Tower>();
+            Player Buyer = tower.Owner;
+            GameObject Minion = GetPlayerShip(Buyer, DropDownList.value);
+            Debug.Log("Tower New minion");
+            if (Minion != null)
+            {
+                if (Minion.GetComponent<CostStat>())
+                {
+                    CostStat MCost = Minion.GetComponent<CostStat>();
+                    if(Buyer.Money < MCost._Cost)
+                    {
+                        Debug.Log("Player too poor");
+                        return;
+                    }
+                    Buyer.Money -= Mathf.RoundToInt(MCost._Cost);
+                }
+                
+                Debug.Log(Minion.name);
+                tower.MinionTemplate = Minion;
+            }
+        }
+    }
+    public void SellTower()
+    {
+        Debug.Log("Tower Sell");
+        if (SelectedObject.GetComponent<Tower>() != null)
+        {
+            Tower tower = SelectedObject.GetComponent<Tower>();
+            Player Buyer = tower.Owner;
+            if (tower.MinionTemplate != null)
+            {
+                if (tower.MinionTemplate.GetComponent<CostStat>())
+                {
+                    CostStat MCost = tower.MinionTemplate.GetComponent<CostStat>();
+                    Buyer.Money += Mathf.RoundToInt(MCost._Cost / 2);
+                }
+                foreach(GameObject minion in tower.MinionsSpawned)
+                {
+                    Destroy(minion);
+                }
+                tower.MinionTemplate = null;
+            }
+        }
+    }
+    void DropdownValueChanged()
+    {
+        Tower tower = SelectedObject.GetComponent<Tower>();
+        Player Buyer = tower.Owner;
+        GameObject Minion = GetPlayerShip(Buyer, DropDownList.value);
+        Debug.Log("Updating Minion Cost");
+        if (Minion != null)
+        {
+            if (Minion.GetComponent<CostStat>())
+            {
+                CostStat MCost = Minion.GetComponent<CostStat>();
+                TowerCostInfo.text = "YourMoney: "+ Buyer.Money + ", Cost: " + MCost._Cost + ", Upkeep:" + MCost._BaseUpkeep;
+            }
+            else
+            {
+                TowerCostInfo.text = "YourMoney: " + Buyer.Money + ", Cost: Free";
+            }
         }
     }
     void ShowSelectedTowerShop(object sender, ObjectSelectEventArgs args)
@@ -58,6 +168,8 @@ public class UserTowerShop : MonoBehaviour
             this.gameObject.SetActive(true);
             this.TowerText.text = SelectedObject.name;
             SetInfoText();
+            LoadTower();
+            DropdownValueChanged();
         }
         //this debug will cause null pointer since other event insta clears name lmao
         //Debug.Log("UserShipShop: Event args gave this object: " + args.SelectedObj.name);

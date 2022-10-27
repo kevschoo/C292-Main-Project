@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &508582944957494124
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2239713153002132963, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132963, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132963, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132963, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132963, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132963, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132963, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132963, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132963, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132963, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132963, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132965, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: <MaxShipParts>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132965, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: <ChosenParts>k__BackingField.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132965, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: <ChosenParts>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 22023a6efe4b6f743814a965ba66ed9f, type: 2}
+    - target: {fileID: 2239713153002132966, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: <_BaseDamage>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132966, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: <_AttackRange>k__BackingField
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132966, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: <_BaseAttackSpeed>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132968, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: <_Cost>k__BackingField
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132968, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: <_BaseCost>k__BackingField
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132973, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: allowOrbit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153002132974, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_Name
+      value: Blue Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239713153265586263, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8da58a3948fd5c44092acdb8e884628a, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3c825a24bd192e74c98bd8be010a2545, type: 3}

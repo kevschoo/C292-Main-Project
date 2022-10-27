@@ -13,8 +13,14 @@ public abstract class Player : MonoBehaviour
 
     [SerializeField] public abstract List<SpaceObject> PlayerOwnedObjects { get; set; }
 
+    [SerializeField] public abstract List<Tower> PlayerAvaliableTowers { get; set; }
+
+    [SerializeField] public abstract List<SpaceObject> PlayerAvaliableShips { get; set; }
+
     [SerializeField] public abstract GameObject SelectedObject { get; set; }
 
-    [SerializeField] public abstract int index { get; set; }
+    [SerializeField] public abstract int Index { get; set; }
+
+    [SerializeField] public abstract int Money { get; set; }
 
 }
