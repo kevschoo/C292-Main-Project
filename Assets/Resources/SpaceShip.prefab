@@ -36,7 +36,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2239713153002132974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.48, y: 10.49, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2239713153265586262}
@@ -64,7 +64,7 @@ MonoBehaviour:
   <upgradeSlots>k__BackingField: {fileID: 0}
   <statusEffectManager>k__BackingField: {fileID: 0}
   <objectAI>k__BackingField: {fileID: 0}
-  <Team>k__BackingField: Liberals
+  <Team>k__BackingField: 
   <Parent>k__BackingField: {fileID: 0}
   <Owner>k__BackingField: {fileID: 0}
   HealthSpawnMod: 1
@@ -260,7 +260,7 @@ MonoBehaviour:
   HomeBase: {fileID: 0}
   InCombat: 0
   BaseAiType: 0
-  AiType: 3
+  AiType: 2
   IsAtHome: 0
   MaxDistanceFromHome: 0.1
   AttackAtPercentOfRange: 0.9

@@ -1314,9 +1314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PlayersPermUpgrade>k__BackingField: {fileID: 11400000, guid: dfae209c707e4fe49b73922a1931e87e, type: 2}
-  <PlayerOwnedObjects>k__BackingField:
-  - {fileID: 0}
-  - {fileID: 0}
+  <PlayerOwnedObjects>k__BackingField: []
   <SelectedObject>k__BackingField: {fileID: 0}
   <index>k__BackingField: 0
   MainCam: {fileID: 0}
@@ -18362,7 +18360,7 @@ MonoBehaviour:
   <objectAI>k__BackingField: {fileID: 0}
   <Team>k__BackingField: gay
   <Parent>k__BackingField: {fileID: 0}
-  <Owner>k__BackingField: {fileID: 1500707618}
+  <Owner>k__BackingField: {fileID: 421317119}
   HealthSpawnMod: 1
   HealthRegenMod: 1
   isRegenerating: 0

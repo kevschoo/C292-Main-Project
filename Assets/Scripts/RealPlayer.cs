@@ -77,6 +77,9 @@ public class RealPlayer : Player
         }
 
     }
+    float NewX = 0;
+    float NewY = 0;
+    float EdgeSize = 30f;
     // Update is called once per frame
     void Update()
     {
@@ -89,6 +92,8 @@ public class RealPlayer : Player
             CameraSize += Input.GetAxis("Mouse ScrollWheel") * -10f;
             CameraSize = Mathf.Clamp(CameraSize, minSize, maxSize);
             Camera.main.orthographicSize = CameraSize;
+
+            
         }
 
         if (Input.GetButtonDown("Escape") || Input.GetMouseButtonDown(2))
