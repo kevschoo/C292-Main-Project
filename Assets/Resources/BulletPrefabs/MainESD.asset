@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1df88f2520ef944be8b9a120eac95f, type: 3}
+  m_Name: MainESD
+  m_EditorClassIdentifier: 
+  <SpawnableObjects>k__BackingField:
+  - {fileID: 1548163306043388832, guid: 68d3b31a247cce14c8494c2242ce0c24, type: 3}
+  - {fileID: 5773727996193369815, guid: ec41c0b0e4fc73542af632bf7593cb2e, type: 3}
+  - {fileID: 4925631121405442101, guid: 1a4c312fe1551bb49a362297f72ff447, type: 3}

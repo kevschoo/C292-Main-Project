@@ -1,0 +1,401 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4877085061353621925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5917282560794720269}
+  - component: {fileID: 2759776608029310932}
+  m_Layer: 0
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5917282560794720269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877085061353621925}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9191750710725688791}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!212 &2759776608029310932
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877085061353621925}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: d21b7f835fe35da4fbc42724a6aa5430, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.93, y: 0.84}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &7497594671576959316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9191750710725688791}
+  - component: {fileID: 1967709849907956880}
+  - component: {fileID: 4540293813247189874}
+  - component: {fileID: 6452292948293629191}
+  - component: {fileID: 4723408566623331850}
+  - component: {fileID: 1378627834879645746}
+  - component: {fileID: 6630316447169127416}
+  - component: {fileID: 5025216291912694896}
+  - component: {fileID: 2584669143626228206}
+  - component: {fileID: 2768177855246801788}
+  - component: {fileID: 1954696895088166108}
+  - component: {fileID: 2421311633532172746}
+  - component: {fileID: 6149302650398113434}
+  m_Layer: 0
+  m_Name: LaunchMinion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9191750710725688791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_Children:
+  - {fileID: 5917282560794720269}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1967709849907956880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e97ba85ef00f6b548a10151fba21d7fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <SpriteRender>k__BackingField: {fileID: 2759776608029310932}
+  <MySprite>k__BackingField: {fileID: 21300000, guid: d21b7f835fe35da4fbc42724a6aa5430, type: 3}
+  <Parent>k__BackingField: {fileID: 0}
+  <team>k__BackingField: {fileID: 0}
+  <Owner>k__BackingField: {fileID: 0}
+  <atr_Perma>k__BackingField: {fileID: 0}
+  <EntityName>k__BackingField: LaunchMinion
+  <atr_Offense>k__BackingField: {fileID: 0}
+  <atr_Defense>k__BackingField: {fileID: 0}
+  <atr_Minion>k__BackingField: {fileID: 0}
+  <atr_Mobility>k__BackingField: {fileID: 0}
+  <atr_Cost>k__BackingField: {fileID: 0}
+  <atr_Upgrade>k__BackingField: {fileID: 0}
+  <atr_Status>k__BackingField: {fileID: 0}
+  <entityAI>k__BackingField: {fileID: 0}
+  <IsTower>k__BackingField: 0
+  <Price>k__BackingField: 0
+  <HealthSpawnModifier>k__BackingField: 1
+  <HealthRegenerationModifier>k__BackingField: 1
+  <CanRegenerate>k__BackingField: 1
+  <IsRegenerating>k__BackingField: 0
+  <IsInvincible>k__BackingField: 0
+  <CanDieAtZero>k__BackingField: 1
+  <CanDie>k__BackingField: 1
+  <FriendlyFire>k__BackingField: 0
+  <MinionsDieOnDeath>k__BackingField: 1
+--- !u!114 &4540293813247189874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 954d158be61689d4ab6409e1bd43a308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <atr_BaseDamage>k__BackingField: 175
+  <atr_BasePenetration>k__BackingField: 25
+  <atr_BaseDamageIncrease>k__BackingField: 25
+  <atr_BaseAttackRange>k__BackingField: 10
+  <atr_BaseAttackSpeed>k__BackingField: 2
+  <atr_Damage>k__BackingField: 0
+  <atr_Penetration>k__BackingField: 0
+  <atr_DamageIncrease>k__BackingField: 0
+  <atr_AttackRange>k__BackingField: 0
+  <atr_AttackSpeed>k__BackingField: 0
+--- !u!114 &6452292948293629191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec5a6b0f1db20649b047d7cb45b2de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <atr_BaseMaxHealth>k__BackingField: 200
+  <atr_BaseDefense>k__BackingField: 20
+  <atr_BaseDamageReduction>k__BackingField: 2
+  <atr_BaseRegeneration>k__BackingField: 2
+  <atr_CurrentHealth>k__BackingField: 0
+  <atr_MaxHealth>k__BackingField: 0
+  <atr_Defense>k__BackingField: 0
+  <atr_DamageReduction>k__BackingField: 0
+  <atr_Regeneration>k__BackingField: 0
+--- !u!114 &4723408566623331850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7161e5ef787089445a0619aa0833a936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <atr_BaseSpeed>k__BackingField: 4
+  <atr_BaseTravelRange>k__BackingField: 1
+  <atr_Speed>k__BackingField: 0
+  <atr_TravelRange>k__BackingField: 0
+  <atr_CanMove>k__BackingField: 0
+--- !u!114 &1378627834879645746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f779a021d1415af4d9ae0b7c47dc617b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <atr_BaseMaxMinionAmount>k__BackingField: 1
+  <atr_BaseMinionCooldown>k__BackingField: 10
+  <atr_CurMinionAmount>k__BackingField: 0
+  <atr_MaxMinionAmount>k__BackingField: 0
+  <atr_MinionCooldown>k__BackingField: 0
+  <atr_CanSpawnMinions>k__BackingField: 0
+  <atr_KillMinionsOnDeath>k__BackingField: 1
+  <MinionType>k__BackingField: {fileID: 0}
+  <Minions>k__BackingField: []
+--- !u!114 &6630316447169127416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ecc6a7fbfad8c4b987ef529ec63965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <atr_BaseCostModifier>k__BackingField: 20
+  <atr_BaseUpkeepModifier>k__BackingField: 20
+  <atr_CostModifier>k__BackingField: 0
+  <atr_UpkeepModifier>k__BackingField: 0
+  <atr_HasUpkeepCosts>k__BackingField: 0
+  <atr_UpKeepCooldown>k__BackingField: 0
+--- !u!114 &5025216291912694896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394dfca1e46cba34abc9722fccaac630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsImmuneToEffects>k__BackingField: 0
+  <CurrentEffects>k__BackingField: []
+  <ImmuneToEffects>k__BackingField: []
+  <CurrentEffectType>k__BackingField: []
+--- !u!114 &2584669143626228206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cd21810172b29419ac73ce5a26301f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxParts>k__BackingField: 5
+  <CurrentParts>k__BackingField: 0
+  <MaxEntitySystems>k__BackingField: 3
+  <CurrentEntitySystems>k__BackingField: 0
+  <EquippedEntityParts>k__BackingField: []
+  <IllegalParts>k__BackingField: []
+  <EntitySystems>k__BackingField: []
+  <atr_MaxHealthBonus>k__BackingField: 0
+  <atr_DefenseBonus>k__BackingField: 0
+  <atr_DamageReductionBonus>k__BackingField: 0
+  <atr_RegenerationBonus>k__BackingField: 0
+  <atr_DamageBonus>k__BackingField: 0
+  <atr_PenetrationBonus>k__BackingField: 0
+  <atr_DamageIncreaseBonus>k__BackingField: 0
+  <atr_AttackRangeBonus>k__BackingField: 0
+  <atr_AttackSpeedBonus>k__BackingField: 0
+  <atr_SpeedBonus>k__BackingField: 0
+  <atr_TravelRangeBonus>k__BackingField: 0
+  <atr_CostModifierBonus>k__BackingField: 0
+  <atr_UpkeepModifierBonus>k__BackingField: 0
+  <atr_MaxMinionAmountBonus>k__BackingField: 0
+  <atr_MinionCooldownModifierBonus>k__BackingField: 0
+--- !u!114 &2768177855246801788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de54f6d4d4ae97f47962fe2755956ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectableZone: {fileID: 0}
+--- !u!114 &1954696895088166108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110d354fe89c27e4f8800f114830acf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AITypeName>k__BackingField: Default
+  <ObjectiveTarget>k__BackingField: {fileID: 0}
+  <Target>k__BackingField: {fileID: 0}
+  <BaseLocation>k__BackingField: {fileID: 0}
+  <AIEnabled>k__BackingField: 1
+  <OffensiveSystemData>k__BackingField: {fileID: 11400000, guid: fb10241818eebd244b1643dfdd3dd46c, type: 2}
+  <DefensiveSystemData>k__BackingField: {fileID: 11400000, guid: fb10241818eebd244b1643dfdd3dd46c, type: 2}
+  <AltSystemData>k__BackingField: {fileID: 11400000, guid: fb10241818eebd244b1643dfdd3dd46c, type: 2}
+  Agent: {fileID: 0}
+  thisEntity: {fileID: 0}
+  AllowTargetChange: 0
+  GetTargetFromParent: 0
+  OffenseSystems: []
+  DefenseSystems: []
+  AltSystems: []
+  OffenseSystemsActive: 0
+  DefenseSystemsActive: 0
+  CreatingMinion: 0
+  OffenseStartDelay: 0.15
+  DefenseStartDelay: 0.15
+  BaseStopDistance: 1
+  EnemyStopDistance: 1
+  DistanceFromBase: 0
+  DistanceFromTarget: 0
+  DistanceFromObjectiveTarget: 0
+--- !u!50 &2421311633532172746
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &6149302650398113434
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497594671576959316}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

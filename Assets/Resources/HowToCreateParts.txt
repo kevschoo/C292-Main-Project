@@ -1,0 +1,17 @@
+EntityPart - Set attributes in editor, add system name to the name of the Class "Beams" will try creating "Beams" component
+DO NOT attempt to generate components that are not scripts, DO NOT modify names of components, Doing so will make that component unremoveable from a ship in the shop.
+
+Entity System Data - Add all the potential bullets, prefabs, and spawnables for defense, attack, and alt systems into one of the three systemdatas, all component part scripts will check their ai for the respective bullet prefab or whatever to set as what they will instantiate
+
+Permupgrades- one blank one for all players to reset to, a few seperate ones for enemy bonus, one changeableone for player instance to modify across game session
+
+PKEntity - List of known spawnables for a player to view in a shop, contains gameobjects that likely are ships and towers. Enemy players will use this to determine what to spawn per map.
+
+PKUpgrades - list of known upgrades for a player, populate with scriptable EntityParts
+
+//Bullet Prefab folder, place all bullets in here for easy adding to the EntitySystemData SO
+//EntityPart prefab folder, place all entityPart SO in here for easy adding to PKU SO's
+//EntitySystem prefab folder, place all ESD SO in here
+//EntityPrefab folder, place all basic spaceships in here
+
+//Entities need rigidbodies and colliders to interact, bullets NEED these TOO!

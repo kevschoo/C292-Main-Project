@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a407a1bd9df5e4aab359bb871a194b, type: 3}
+  m_Name: BaseBonusExample
+  m_EditorClassIdentifier: 
+  <atr_IncomeGeneration>k__BackingField: 50
+  <atr_IncomePerWave>k__BackingField: 50
+  <atr_HealthRegenerationModifier>k__BackingField: 1.5

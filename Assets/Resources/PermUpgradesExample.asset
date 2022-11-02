@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a38851c6b36314c9da7fc94a78d50b, type: 3}
+  m_Name: PermUpgradesExample
+  m_EditorClassIdentifier: 
+  <atr_MaxHealthBonus>k__BackingField: 100
+  <atr_DefenseBonus>k__BackingField: 0
+  <atr_DamageReductionBonus>k__BackingField: 0
+  <atr_RegenerationBonus>k__BackingField: 1
+  <atr_DamageBonus>k__BackingField: 10
+  <atr_PenetrationBonus>k__BackingField: 10
+  <atr_DamageIncreaseBonus>k__BackingField: 0
+  <atr_AttackRangeBonus>k__BackingField: 0
+  <atr_AttackSpeedBonus>k__BackingField: 0
+  <atr_SpeedBonus>k__BackingField: 0
+  <atr_TravelRangeBonus>k__BackingField: 0
+  <atr_CostModifierBonus>k__BackingField: 0
+  <atr_UpkeepModifierBonus>k__BackingField: 0
+  <atr_MaxMinionAmountBonus>k__BackingField: 0
+  <atr_MinionCooldownModifierBonus>k__BackingField: 0
