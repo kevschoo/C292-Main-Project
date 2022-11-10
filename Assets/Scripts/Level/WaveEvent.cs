@@ -40,6 +40,9 @@ public static class WaveEvent
 
     public static void InvokeChangePlayerObjective(Player player, GameObject Objective)
     {
-        GameEnd(null, new WaveEventArgs { player = player, Target = Objective });
+        Debug.Log("Event Invoked for objective changed");
+        ChangePlayerObjective(null, new WaveEventArgs { player = player, Target = Objective });
     }
+
+
 }

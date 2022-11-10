@@ -45,7 +45,7 @@ public class AI_Default : EntityAI
 
     public override void OnDamageTaken(GameObject Damager)
     {
-        Debug.Log("Damaged");
+        //Debug.Log("Damaged");
         //if we allow changing target
         if(AllowTargetChange)
         {
@@ -87,6 +87,7 @@ public class AI_Default : EntityAI
 
     private void Awake()
     {
+        WaveEvent.ChangePlayerObjective += ChangeObjectiveTarget;
         if (gameObject.TryGetComponent<NavMeshAgent>(out NavMeshAgent NVA))
         { 
           Agent = NVA;
@@ -117,18 +118,21 @@ public class AI_Default : EntityAI
 
     void Start()
     {
-        WaveEvent.ChangePlayerObjective += ChangeObjectiveTarget;
+
     }
 
     void ChangeObjectiveTarget(object sender, WaveEventArgs args)
     {
-        if(this.thisEntity.Owner != null)
+        Debug.Log("Changing objective target attempt");
+        if (this.thisEntity.Owner != null)
         {
             if(args.player != null)
             {
                 if(args.player == this.thisEntity.Owner)
                 {
-                    this.ObjectiveTarget = args.Target;
+                    Debug.Log("Changing objective target" + args.Target.gameObject);
+                    this.ObjectiveTarget = args.Target.gameObject;
+                    this.Target = args.Target.gameObject;
                 }
             }
         }
@@ -225,6 +229,8 @@ public class AI_Default : EntityAI
     void CheckRangeForTargets()
     {
         if(Target)
+        { return; }
+        if (ObjectiveTarget)
         { return; }
         //Debug.Log("finding Target from circle check!");
         Collider2D[] NearbyEntities = Physics2D.OverlapCircleAll(this.transform.position, thisEntity.atr_Offense.atr_AttackRange);

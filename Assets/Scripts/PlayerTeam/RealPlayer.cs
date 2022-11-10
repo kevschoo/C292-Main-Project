@@ -75,7 +75,7 @@ public class RealPlayer : Player
             if (Input.GetButtonDown("RightClick"))
             {
                 Vector2 raycastPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-                Debug.Log("rightclicker");
+                //Debug.Log("rightclicker");
                 if (CanActivateSelectedAbility)
                 {
                     Debug.Log("ability used");
@@ -88,7 +88,7 @@ public class RealPlayer : Player
             }
             if (Input.GetButtonDown("MiddleClick"))
             {
-                Debug.Log("middler");
+                //Debug.Log("middler");
                 if (SelectedObject != null)
                 {
                     CameraNextPos = new Vector3(SelectedObject.transform.position.x, SelectedObject.transform.position.y, -20);

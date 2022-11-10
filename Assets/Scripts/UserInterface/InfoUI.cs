@@ -38,6 +38,7 @@ public class InfoUI : MonoBehaviour
         UpgradesText.text = "";
         SystemsText.text = "";
         MinionsText.text = "";
+        this.gameObject.SetActive(false);
     }
 
     private void OnDestroy()

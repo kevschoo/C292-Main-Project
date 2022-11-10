@@ -131,11 +131,11 @@ public class EntityBase : Entity
         {
             Debug.Log("Now Attacking" + this.name);
             IsDefending = false;
-            WaveEvent.InvokeChangePlayerObjective(this.Owner, EnemyBase);
+            WaveEvent.InvokeChangePlayerObjective(this.Owner, EnemyBase.gameObject);
         }
         else if(!IsDefending)
         {
-            Debug.Log("Now Defending" + this.name);
+            //Debug.Log("Now Defending" + this.name);
             IsDefending = true;
         }
     }
@@ -151,7 +151,7 @@ public class EntityBase : Entity
                 { 
                     if(waveData.Entity)
                     {
-                        Debug.Log("Entity Attempt" + waveData.Entity.name);
+                        //Debug.Log("Entity Attempt" + waveData.Entity.name);
                         GenerateUnits(waveData.NumberToSpawn, waveData.Entity, waveData.SpawnDelay);
                     }
                     
@@ -212,6 +212,7 @@ public class EntityBase : Entity
                 if (CurrentWaveEnemies.Count == 0)
                 {
                     Debug.Log("All this waves enemies have died");
+
                     levelHandler.StartNextWave();
                 }
             }
@@ -220,6 +221,7 @@ public class EntityBase : Entity
         CheckForDeath();
         Regenerate();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("hit");

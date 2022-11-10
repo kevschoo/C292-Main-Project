@@ -45,7 +45,7 @@ public class EntityShip : Entity
 
     private void Awake()
     {
-        Debug.Log("Entity Ship: " + EntityName + " Spawned");
+        //Debug.Log("Entity Ship: " + EntityName + " Spawned");
         if (this.Owner != null)
         {
             if (this.atr_Perma == null)

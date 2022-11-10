@@ -67,7 +67,7 @@ public class MissileLauncher : EntitySystem
     void Start()
     {
         this.isActive = false;
-        Debug.Log("BeamsI Part Created");
+        //Debug.Log("BeamsI Part Created");
         this.IsOnCoolDown = false;
         if (this.gameObject.TryGetComponent<EntityAI>(out EntityAI PAI))
         {

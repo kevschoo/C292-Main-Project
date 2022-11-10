@@ -150,7 +150,7 @@ public class AttributeUpgradeSystem : MonoBehaviour
         Debug.Log("Not Illegal");
         if (HasRoomForThisPart(Part))
         {
-            Debug.Log("adding");
+            //Debug.Log("adding");
             EquippedEntityParts.Add(Part);
             if(this.gameObject.TryGetComponent<EntityAI>(out EntityAI Ai))
             {

@@ -23,13 +23,23 @@ public class UpgradeStoreUI : MonoBehaviour
         EntitySelectEvent.SelectionChanged += ShowSelectedEntity;
         UpgradeSelectEvent.UpgradeChanged += ChangeUpgrade;
         UpgradeSelectEvent.UpgradeCleared += ClearUpgrade;
+        this.gameObject.SetActive(false);
+        WaveEvent.GameEnd += OnGameEnd;
     }
+
     private void OnDestroy()
     {
         EntitySelectEvent.SelectionCleared -= ClearSelectedEntity;
         EntitySelectEvent.SelectionChanged -= ShowSelectedEntity;
         UpgradeSelectEvent.UpgradeChanged -= ChangeUpgrade;
         UpgradeSelectEvent.UpgradeCleared -= ClearUpgrade;
+        WaveEvent.GameEnd -= OnGameEnd;
+    }
+
+    void OnGameEnd(object sender, WaveEventArgs args)
+    {
+        this.gameObject.SetActive(false);
+        this.enabled = false;
     }
 
     void ClearSelectedEntity(object sender, EventArgs args)
@@ -86,6 +96,53 @@ public class UpgradeStoreUI : MonoBehaviour
         {
             SelectedEntityPart = Shopper.PKUpgrades.EntityParts[args.SelectedIndex];
             this.StoreItemDescription.text = SelectedEntityPart.PartName;
+
+            this.StoreItemDescription.text += ", Price: " + SelectedEntityPart.PartCost;
+
+            this.StoreItemDescription.text += ", Size: " + SelectedEntityPart.PartSize;
+            if (SelectedEntityPart.AllowMultiple == false)
+                this.StoreItemDescription.text += ", One Per Ship";
+            if (SelectedEntityPart.EntitySystems.Count != 0)
+            {
+                this.StoreItemDescription.text += ", Systems: ";
+                foreach(string sysname in SelectedEntityPart.EntitySystems)
+                {
+                    this.StoreItemDescription.text += sysname + " ";
+                }
+            }
+            if (SelectedEntityPart.atr_MaxHealthBonus != 0)
+                this.StoreItemDescription.text += ", HP: " + SelectedEntityPart.atr_MaxHealthBonus;
+
+            if (SelectedEntityPart.atr_DefenseBonus != 0)
+                this.StoreItemDescription.text += ", Def: " + SelectedEntityPart.atr_DefenseBonus;
+
+            if (SelectedEntityPart.atr_RegenerationBonus != 0)
+                this.StoreItemDescription.text += ", RG: " + SelectedEntityPart.atr_RegenerationBonus;
+
+            if (SelectedEntityPart.atr_DamageBonus != 0)
+                this.StoreItemDescription.text += ", DMG: " + SelectedEntityPart.atr_DamageBonus;
+
+            if (SelectedEntityPart.atr_PenetrationBonus != 0)
+                this.StoreItemDescription.text += ", PEN: " + SelectedEntityPart.atr_PenetrationBonus;
+
+            if (SelectedEntityPart.atr_AttackRangeBonus != 0)
+                this.StoreItemDescription.text += ", AR: " + SelectedEntityPart.atr_AttackRangeBonus;
+
+            if (SelectedEntityPart.atr_AttackSpeedBonus != 0)
+                this.StoreItemDescription.text += ", AS: " + SelectedEntityPart.atr_AttackSpeedBonus;
+
+            if (SelectedEntityPart. atr_SpeedBonus != 0)
+                this.StoreItemDescription.text += ", SPD: " + SelectedEntityPart.atr_SpeedBonus;
+
+            if (SelectedEntityPart.atr_TravelRangeBonus != 0)
+                this.StoreItemDescription.text += ", TR: " + SelectedEntityPart.atr_TravelRangeBonus;
+
+            if (SelectedEntityPart.atr_MaxMinionAmountBonus != 0)
+                this.StoreItemDescription.text += ", MIN+: " + SelectedEntityPart.atr_MaxMinionAmountBonus;
+
+            if (SelectedEntityPart.atr_CostModifierBonus != 0)
+                this.StoreItemDescription.text += ", COST+: " + SelectedEntityPart.atr_CostModifierBonus;
+
         }
     }
     public void ClearUpgrade(object sender, EventArgs args)

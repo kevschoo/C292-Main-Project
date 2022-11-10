@@ -23,6 +23,9 @@ public class ShipStoreUI : MonoBehaviour
         EntitySelectEvent.SelectionChanged += ShowSelectedEntity;
         StoreSelectEvent.PurchaseChanged += ChangePurchase;
         StoreSelectEvent.PurchaseCleared += ClearPurchase;
+        this.gameObject.SetActive(false);
+        WaveEvent.GameEnd += OnGameEnd;
+
     }
     private void OnDestroy()
     {
@@ -30,7 +33,14 @@ public class ShipStoreUI : MonoBehaviour
         EntitySelectEvent.SelectionChanged -= ShowSelectedEntity;
         StoreSelectEvent.PurchaseChanged -= ChangePurchase;
         StoreSelectEvent.PurchaseCleared -= ClearPurchase;
+        WaveEvent.GameEnd -= OnGameEnd;
     }
+    void OnGameEnd(object sender, WaveEventArgs args)
+    {
+        this.gameObject.SetActive(false);
+        this.enabled = false;
+    }
+
     void ClearSelectedEntity(object sender, EventArgs args)
     {
         this.gameObject.SetActive(false);
@@ -103,7 +113,33 @@ public class ShipStoreUI : MonoBehaviour
         {
             SelectedProduct = Shopper.PKEntities.Entities[args.SelectedIndex];
             this.StoreItemDescription.text = SelectedProduct.name;
-
+            if (SelectedProduct.TryGetComponent<EntityShip>(out EntityShip SPES))
+            {
+                this.StoreItemDescription.text += ", Price: " + SPES.Price;
+            }
+            if (SelectedProduct.TryGetComponent<AttributeMinions>(out AttributeMinions Min))
+            {
+                if(Min.atr_CanSpawnMinions)
+                {
+                    this.StoreItemDescription.text += ", Minions: " + Min.atr_BaseMaxMinionAmount;
+                }
+            }
+            if (SelectedProduct.TryGetComponent<AttributeOffense>(out AttributeOffense Off))
+            {
+                this.StoreItemDescription.text += ", DMG/PEN/AS/AR/+%: " + Off.atr_BaseDamage + "/" + Off.atr_BasePenetration + "/" + Off.atr_BaseAttackSpeed + "/" + Off.atr_BaseAttackRange + "/" + Off.atr_BaseDamageIncrease ;
+            }
+            if (SelectedProduct.TryGetComponent<AttributeDefense>(out AttributeDefense Def))
+            {
+                this.StoreItemDescription.text += ", HP/RG/DEF/-%: " + Def.atr_BaseMaxHealth +"/" + Def.atr_BaseRegeneration + "/" + Def.atr_BaseDefense + "/" + Def.atr_DamageReduction;
+            }
+            if (SelectedProduct.TryGetComponent<AttributeMobility>(out AttributeMobility Mob))
+            {
+                this.StoreItemDescription.text += ", SPD/TR: " + Mob.atr_BaseSpeed + "/" + Mob.atr_BaseTravelRange;
+            }
+            if (SelectedProduct.TryGetComponent<AttributeUpgradeSystem>(out AttributeUpgradeSystem UP))
+            {
+                this.StoreItemDescription.text += ", MaxPart/MaxSystems: " + UP.MaxParts + "/" + UP.MaxEntitySystems;
+            }
         }
     }
     void ClearPurchase(object sender, EventArgs args)

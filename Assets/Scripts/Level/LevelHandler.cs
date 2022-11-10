@@ -56,10 +56,15 @@ public class LevelHandler : MonoBehaviour
     {
         if(CurrentWaveNumber+1 > LastWaveNumber)
         {
+            Debug.Log("Reversing Instead of starting new wave");
             WaveEvent.InvokeReversal(false);
+            isWaveActive = false;
+            CurrentWaveNumber++;
+            HasLevelReversed = true;
         }
         else
         {
+            Debug.Log("starting new wave");
             CurrentWaveNumber++;
             WaveEvent.InvokeWaveStart(CurrentWaveNumber);
         }
@@ -79,6 +84,7 @@ public class LevelHandler : MonoBehaviour
             {
                 if(HasLevelReversed == false)
                 {
+                    isWaveActive = false;
                     HasLevelReversed = true;
                     WaveEvent.InvokeReversal(false);
                 }

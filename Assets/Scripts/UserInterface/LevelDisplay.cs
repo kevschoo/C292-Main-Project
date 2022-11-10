@@ -15,11 +15,16 @@ public class LevelDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI TimeScaleText;
     [SerializeField] TextMeshProUGUI GameStatusText;
 
+    [SerializeField] GameObject GameOverScreen;
+    [SerializeField] GameObject VictoryScreen;
+
     float LevelTime = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameOverScreen.gameObject.SetActive(false);
+        VictoryScreen.gameObject.SetActive(false);
         GameStatusText.gameObject.SetActive(false);
         if (levelHandler == null)
         {
@@ -48,21 +53,25 @@ public class LevelDisplay : MonoBehaviour
         {
             GameStatusText.gameObject.SetActive(true);
             GameStatusText.text = "Game Over";
+            GameOverScreen.gameObject.SetActive(true);
         }
         else if(args.GameStatus == true && args.player == MainPlayer)
         {
             GameStatusText.gameObject.SetActive(true);
             GameStatusText.text = "Level Complete";
+            VictoryScreen.gameObject.SetActive(true);
         }
         else if (args.GameStatus == false && args.player != MainPlayer)
         {
             GameStatusText.gameObject.SetActive(true);
             GameStatusText.text = "Level Complete";
+            VictoryScreen.gameObject.SetActive(true);
         }
         else
         {
             GameStatusText.gameObject.SetActive(true);
             GameStatusText.text = "Game Over";
+            GameOverScreen.gameObject.SetActive(true);
         }
     }
     void ReverseMode(object sender, WaveEventArgs args)

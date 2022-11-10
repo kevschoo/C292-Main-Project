@@ -35,7 +35,7 @@ public class DynamicScrollView : MonoBehaviour
 
     public void LoadAvailableStoreItems(List<GameObject> Entities)
     {
-        Debug.Log("Clearing old store");
+        //Debug.Log("Clearing old store");
         Items.Clear();
         DestroyOldIcons();
         foreach (GameObject ent in Entities)
@@ -62,7 +62,7 @@ public class DynamicScrollView : MonoBehaviour
 
     public void LoadAvailableUpgradeItems(List<EntityPart> Parts)
     {
-        Debug.Log("Clearing old upgrade store");
+        //Debug.Log("Clearing old upgrade store");
         Items.Clear();
         DestroyOldIcons();
         foreach (EntityPart part in Parts)
