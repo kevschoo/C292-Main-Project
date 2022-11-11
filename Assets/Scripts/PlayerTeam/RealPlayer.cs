@@ -223,7 +223,11 @@ public class RealPlayer : Player
         else
         {
             OldObjects.Add(NewObjects[0]);
-            EntitySelectEvent.InvokeSelectionChanged(NewObjects[0], this);
+            if(NewObjects[0] != null)
+            {
+                EntitySelectEvent.InvokeSelectionChanged(NewObjects[0], this);
+            }
+
             //Debug.Log("sent" + NewObjects[0]);
         }
     }

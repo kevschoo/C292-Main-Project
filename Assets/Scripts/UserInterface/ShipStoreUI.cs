@@ -57,6 +57,10 @@ public class ShipStoreUI : MonoBehaviour
         SelectedEntity = args.SelectedEntity;
         if (SelectedEntity.TryGetComponent<EntityShip>(out EntityShip EInfo))
         {
+            if (EInfo == null)
+            {
+                return;
+            }
             EntityInfo = EInfo;
             Shopper = args.player;
             if (EInfo.Owner == args.player)
@@ -94,6 +98,10 @@ public class ShipStoreUI : MonoBehaviour
         }
         else if (SelectedEntity.TryGetComponent<EntityBase>(out EntityBase BaseInfo))
         {
+            if(BaseInfo == null)
+            {
+                return;
+            }
             Shopper = args.player;
             if (BaseInfo.Owner == args.player)
             {
