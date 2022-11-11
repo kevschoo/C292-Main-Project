@@ -49,6 +49,8 @@ public class LevelDisplay : MonoBehaviour
     }
     void OnGameEnd(object sender, WaveEventArgs args)
     {
+        if(GameStatusText.text == null)
+        { return;}
         if (args.GameStatus == false && args.player == MainPlayer)
         {
             GameStatusText.gameObject.SetActive(true);
