@@ -64,8 +64,9 @@ public class AttributeUpgradeSystem : MonoBehaviour
         atr_CostModifierBonus = 0;
         atr_UpkeepModifierBonus = 0;
         atr_MinionCooldownModifierBonus = 0;
+        atr_MaxMinionAmountBonus = 0;
 
-        foreach(EntityPart part in EquippedEntityParts)
+        foreach (EntityPart part in EquippedEntityParts)
         {
             CurrentParts += part.PartSize;
             atr_MaxHealthBonus += part.atr_MaxHealthBonus;
@@ -81,6 +82,7 @@ public class AttributeUpgradeSystem : MonoBehaviour
             atr_TravelRangeBonus += part.atr_TravelRangeBonus;
             atr_CostModifierBonus += part.atr_CostModifierBonus;
             atr_UpkeepModifierBonus += part.atr_UpkeepModifierBonus;
+            atr_MaxMinionAmountBonus += part.atr_MaxMinionAmountBonus;
             atr_MinionCooldownModifierBonus += part.atr_MinionCooldownModifierBonus;
         }
         if (gameObject.GetComponent<Entity>())

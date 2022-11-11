@@ -110,6 +110,7 @@ public class InfoUI : MonoBehaviour
 
                 if (EntityInfo.entityAI)
                 {
+                    AiText.enabled = true;
                     AiText.text = EntityInfo.entityAI.AITypeName + " | ";
                     if(EntityInfo.entityAI.Target != null)
                     {
