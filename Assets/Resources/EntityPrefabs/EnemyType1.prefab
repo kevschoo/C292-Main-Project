@@ -56,12 +56,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <SpriteRender>k__BackingField: {fileID: 172039350325039648}
-  <MySprite>k__BackingField: {fileID: 21300000, guid: 16eafd523a7237a4e885d051976d647d, type: 3}
+  <MySprite>k__BackingField: {fileID: 21300000, guid: ca503b44f9c953a46a94ec8fc18aed18, type: 3}
   <Parent>k__BackingField: {fileID: 0}
   <team>k__BackingField: {fileID: 0}
   <Owner>k__BackingField: {fileID: 0}
   <atr_Perma>k__BackingField: {fileID: 0}
-  <EntityName>k__BackingField: Greeny
+  <EntityName>k__BackingField: Red Death
   <atr_Offense>k__BackingField: {fileID: 0}
   <atr_Defense>k__BackingField: {fileID: 0}
   <atr_Minion>k__BackingField: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 954d158be61689d4ab6409e1bd43a308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <atr_BaseDamage>k__BackingField: 150
+  <atr_BaseDamage>k__BackingField: 125
   <atr_BasePenetration>k__BackingField: 25
   <atr_BaseDamageIncrease>k__BackingField: 25
   <atr_BaseAttackRange>k__BackingField: 4
@@ -115,10 +115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec5a6b0f1db20649b047d7cb45b2de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <atr_BaseMaxHealth>k__BackingField: 500
-  <atr_BaseDefense>k__BackingField: 15
-  <atr_BaseDamageReduction>k__BackingField: 2
-  <atr_BaseRegeneration>k__BackingField: 2
+  <atr_BaseMaxHealth>k__BackingField: 1250
+  <atr_BaseDefense>k__BackingField: 50
+  <atr_BaseDamageReduction>k__BackingField: 5
+  <atr_BaseRegeneration>k__BackingField: 5
   <atr_CurrentHealth>k__BackingField: 0
   <atr_MaxHealth>k__BackingField: 0
   <atr_Defense>k__BackingField: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   <atr_BaseTravelRange>k__BackingField: 5
   <atr_Speed>k__BackingField: 0
   <atr_TravelRange>k__BackingField: 0
-  <atr_CanMove>k__BackingField: 1
+  <atr_CanMove>k__BackingField: 0
 --- !u!114 &3967205514486494662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +214,7 @@ MonoBehaviour:
   <CurrentEntitySystems>k__BackingField: 0
   <EquippedEntityParts>k__BackingField:
   - {fileID: 11400000, guid: beb4c2c1845f389478895fb498c2a7c1, type: 2}
+  - {fileID: 11400000, guid: 337e1ffc038200740b81be1eb62f5dd1, type: 2}
   <IllegalParts>k__BackingField: []
   <EntitySystems>k__BackingField: []
   <atr_MaxHealthBonus>k__BackingField: 0
@@ -266,8 +267,8 @@ MonoBehaviour:
   <AltSystemData>k__BackingField: {fileID: 11400000, guid: fb10241818eebd244b1643dfdd3dd46c, type: 2}
   Agent: {fileID: 0}
   thisEntity: {fileID: 0}
-  AllowTargetChange: 0
-  GetTargetFromParent: 0
+  AllowTargetChange: 1
+  GetTargetFromParent: 1
   OffenseSystems: []
   DefenseSystems: []
   AltSystems: []
@@ -317,7 +318,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
 --- !u!1 &7458354430583202897
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +345,7 @@ Transform:
   m_GameObject: {fileID: 7458354430583202897}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 6602327910939889699}
   m_RootOrder: 0
@@ -389,7 +390,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 16eafd523a7237a4e885d051976d647d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca503b44f9c953a46a94ec8fc18aed18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

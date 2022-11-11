@@ -74,7 +74,7 @@ public class BasicGun : EntitySystem
             ParentAI = PAI;
             if (ParentAI.OffensiveSystemData)
             {
-                BulletType = ParentAI.OffensiveSystemData.SpawnableObjects.Where(gameObject => gameObject.name == "BeamsI").SingleOrDefault();
+                BulletType = ParentAI.OffensiveSystemData.SpawnableObjects.Where(gameObject => gameObject.name == "BasicGun").SingleOrDefault();
             }
             else
             {

@@ -51,6 +51,7 @@ public class UpgradeStoreUI : MonoBehaviour
     }
     void ShowSelectedEntity(object sender, EntityEventArgs args)
     {
+        this.gameObject.SetActive(false);
         SelectedEntity = args.SelectedEntity;
         Shopper = args.player;
         if(SelectedEntity == null)
@@ -67,6 +68,10 @@ public class UpgradeStoreUI : MonoBehaviour
                 {
                     this.gameObject.SetActive(true);
                     ShipStoreScroller.LoadAvailableUpgradeItems(EInfo.Owner.PKUpgrades.EntityParts);
+                }
+                else if (EntityInfo.IsTower == false)
+                {
+                    this.gameObject.SetActive(false);
                 }
             }
             else

@@ -49,6 +49,8 @@ public class AI_Default : EntityAI
         //if we allow changing target
         if(AllowTargetChange)
         {
+            if(Damager == null)
+            { return; }
             if(Damager.TryGetComponent<EntityShip>(out EntityShip DamagerInfo))
             {
                 //ignore them if it is one of our own
@@ -212,12 +214,16 @@ public class AI_Default : EntityAI
 
     private void LateUpdate()
     {
+        if(Target == null)
+        {
+            Target = null;
+        }
         if (thisEntity)
         {
             if (thisEntity.atr_Mobility == null || thisEntity.atr_Offense == null)
             { this.AIEnabled = false; }
             Agent.speed = thisEntity.atr_Mobility.atr_Speed;
-            EnemyStopDistance = thisEntity.atr_Offense.atr_AttackRange / 2;
+            //EnemyStopDistance = thisEntity.atr_Offense.atr_AttackRange / 2;
             AIEnabled = true;
             CheckRangeForTargets();
         }
@@ -314,6 +320,7 @@ public class AI_Default : EntityAI
         if(Target == null)
         {
             ToggleOffense(false);
+            Agent.SetDestination(this.BaseLocation.transform.position);
         }
         if (Target)
         {
@@ -340,7 +347,7 @@ public class AI_Default : EntityAI
                     Agent.SetDestination(this.BaseLocation.transform.position);
                     Target = null;
                 }
-                else if ( DistanceFromTarget > thisEntity.atr_Offense.atr_AttackRange * .9)
+                else if ( DistanceFromTarget > thisEntity.atr_Offense.atr_AttackRange * .9 * EnemyStopDistance)
                 {
                     //Debug.Log("2");
                     Agent.SetDestination(Target.transform.position);
@@ -354,6 +361,9 @@ public class AI_Default : EntityAI
             }
         }
     }
+
+
+
     IEnumerator StartWithDelay(EntitySystem ES, float delay)
     {
         yield return new WaitForSeconds(delay);

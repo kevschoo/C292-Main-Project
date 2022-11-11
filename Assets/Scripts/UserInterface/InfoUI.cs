@@ -49,10 +49,25 @@ public class InfoUI : MonoBehaviour
 
     void ShowSelectedEntity(object sender, EntityEventArgs args)
     {
+        this.gameObject.SetActive(false);
+        EntityInfo = null;
+        AiText.enabled = false;
+        StatusText.enabled = false;
+        CostText.enabled = false;
+        DefenseText.enabled = false;
+        OffenseText.enabled = false;
+        MobilityText.enabled = false;
+        UpgradesText.enabled = false;
+        SystemsText.enabled = false;
+        MinionsText.enabled = false;
+        if (args.SelectedEntity == null)
+        {
+            return;
+        }
         this.gameObject.SetActive(true);
         SelectedEntity = args.SelectedEntity;
         OwnerText.text = SelectedEntity.name;
-        if(SelectedEntity.TryGetComponent<Entity>(out Entity EInfo))
+        if (SelectedEntity.TryGetComponent<Entity>(out Entity EInfo))
         {
             EntityInfo = EInfo;
         }

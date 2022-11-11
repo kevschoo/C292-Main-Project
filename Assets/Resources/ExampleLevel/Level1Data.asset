@@ -17,27 +17,27 @@ MonoBehaviour:
     <NumberToSpawn>k__BackingField: 15
     <SpawnDelay>k__BackingField: 2
     <Entity>k__BackingField: {fileID: 5486308427337786528, guid: b25dd4438a86c22499c014ad085c724c, type: 3}
-  - <WaveNumber>k__BackingField: 1
+  - <WaveNumber>k__BackingField: 2
     <NumberToSpawn>k__BackingField: 5
     <SpawnDelay>k__BackingField: 1
     <Entity>k__BackingField: {fileID: 1046364777461913026, guid: 8a717e20d50ac27428847ebe529a33bc, type: 3}
-  - <WaveNumber>k__BackingField: 2
+  - <WaveNumber>k__BackingField: 3
     <NumberToSpawn>k__BackingField: 5
     <SpawnDelay>k__BackingField: 0
     <Entity>k__BackingField: {fileID: 8786037586266340501, guid: ee8971eca568bf44e8d648082f23a470, type: 3}
-  - <WaveNumber>k__BackingField: 2
+  - <WaveNumber>k__BackingField: 4
     <NumberToSpawn>k__BackingField: 15
     <SpawnDelay>k__BackingField: 2
     <Entity>k__BackingField: {fileID: 5486308427337786528, guid: b25dd4438a86c22499c014ad085c724c, type: 3}
-  - <WaveNumber>k__BackingField: 3
+  - <WaveNumber>k__BackingField: 5
     <NumberToSpawn>k__BackingField: 5
     <SpawnDelay>k__BackingField: 2
     <Entity>k__BackingField: {fileID: 8786037586266340501, guid: ee8971eca568bf44e8d648082f23a470, type: 3}
-  - <WaveNumber>k__BackingField: 3
+  - <WaveNumber>k__BackingField: 6
     <NumberToSpawn>k__BackingField: 5
     <SpawnDelay>k__BackingField: 3
     <Entity>k__BackingField: {fileID: 1046364777461913026, guid: 8a717e20d50ac27428847ebe529a33bc, type: 3}
-  - <WaveNumber>k__BackingField: 3
+  - <WaveNumber>k__BackingField: 7
     <NumberToSpawn>k__BackingField: 15
     <SpawnDelay>k__BackingField: 0
     <Entity>k__BackingField: {fileID: 5486308427337786528, guid: b25dd4438a86c22499c014ad085c724c, type: 3}

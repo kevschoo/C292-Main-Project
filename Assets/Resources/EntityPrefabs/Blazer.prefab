@@ -94,10 +94,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <atr_BaseDamage>k__BackingField: 100
-  <atr_BasePenetration>k__BackingField: 50
+  <atr_BasePenetration>k__BackingField: 100
   <atr_BaseDamageIncrease>k__BackingField: 20
-  <atr_BaseAttackRange>k__BackingField: 3
-  <atr_BaseAttackSpeed>k__BackingField: 5
+  <atr_BaseAttackRange>k__BackingField: 4
+  <atr_BaseAttackSpeed>k__BackingField: 10
   <atr_Damage>k__BackingField: 0
   <atr_Penetration>k__BackingField: 0
   <atr_DamageIncrease>k__BackingField: 0
@@ -115,10 +115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec5a6b0f1db20649b047d7cb45b2de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <atr_BaseMaxHealth>k__BackingField: 150
-  <atr_BaseDefense>k__BackingField: 20
-  <atr_BaseDamageReduction>k__BackingField: 2
-  <atr_BaseRegeneration>k__BackingField: 2
+  <atr_BaseMaxHealth>k__BackingField: 5000
+  <atr_BaseDefense>k__BackingField: 50
+  <atr_BaseDamageReduction>k__BackingField: 7
+  <atr_BaseRegeneration>k__BackingField: 10
   <atr_CurrentHealth>k__BackingField: 0
   <atr_MaxHealth>k__BackingField: 0
   <atr_Defense>k__BackingField: 0
@@ -265,8 +265,8 @@ MonoBehaviour:
   <AltSystemData>k__BackingField: {fileID: 11400000, guid: fb10241818eebd244b1643dfdd3dd46c, type: 2}
   Agent: {fileID: 0}
   thisEntity: {fileID: 0}
-  AllowTargetChange: 0
-  GetTargetFromParent: 0
+  AllowTargetChange: 1
+  GetTargetFromParent: 1
   OffenseSystems: []
   DefenseSystems: []
   AltSystems: []

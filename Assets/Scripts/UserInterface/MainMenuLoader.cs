@@ -36,8 +36,8 @@ public class MainMenuLoader : MonoBehaviour
     public void PlaySelectedLevel(TMP_Dropdown dropdown)
     {
         Debug.Log("Playing Level " + dropdown.value);
-        int SelectedLevel = dropdown.value;
-        Debug.Log(SelectedLevel);
+        int SelectedLevel = dropdown.value + 3;
+        SceneManager.LoadScene(SelectedLevel);
     }
 
 }

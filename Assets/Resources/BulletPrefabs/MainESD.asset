@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: MainESD
   m_EditorClassIdentifier: 
   <SpawnableObjects>k__BackingField:
-  - {fileID: 1548163306043388832, guid: 68d3b31a247cce14c8494c2242ce0c24, type: 3}
   - {fileID: 5773727996193369815, guid: ec41c0b0e4fc73542af632bf7593cb2e, type: 3}
   - {fileID: 4925631121405442101, guid: 1a4c312fe1551bb49a362297f72ff447, type: 3}
+  - {fileID: 4925631121405442101, guid: b6016b0df5de2d34fb3533150856c114, type: 3}
+  - {fileID: 4925631121405442101, guid: d92ddfe39956b584fac70d49a4495382, type: 3}
+  - {fileID: 1548163306043388832, guid: 68d3b31a247cce14c8494c2242ce0c24, type: 3}

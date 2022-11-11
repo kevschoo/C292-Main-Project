@@ -16,7 +16,7 @@ MonoBehaviour:
   <LevelDifficulty>k__BackingField: Easy
   <LevelDescription>k__BackingField: Defend
   <CurrentWaveNumber>k__BackingField: 0
-  <LastWaveNumber>k__BackingField: 3
+  <LastWaveNumber>k__BackingField: 7
   <SurvivalTimeLength>k__BackingField: 0
   <isWaveActive>k__BackingField: 0
   <EnemyBaseWavesData>k__BackingField: {fileID: 11400000, guid: 85396e84b12a7cd4497d41448760da88, type: 2}

@@ -71,7 +71,7 @@ MonoBehaviour:
   <ParentPenetration>k__BackingField: 0
   <ParentDamageIncrease>k__BackingField: 0
   <AllowFriendlyFire>k__BackingField: 0
-  <MaxTargetsToPenetrate>k__BackingField: 1
+  <MaxTargetsToPenetrate>k__BackingField: 2
 --- !u!50 &3362969750066604355
 Rigidbody2D:
   serializedVersion: 4

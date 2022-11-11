@@ -50,7 +50,8 @@ public class ShipStoreUI : MonoBehaviour
     }
     void ShowSelectedEntity(object sender, EntityEventArgs args)
     {
-        if(args.SelectedEntity == null)
+        this.gameObject.SetActive(false);
+        if (args.SelectedEntity == null)
         { return;}
 
         SelectedEntity = args.SelectedEntity;
@@ -67,6 +68,10 @@ public class ShipStoreUI : MonoBehaviour
                 {
                     this.gameObject.SetActive(true);
                     ShipStoreScroller.LoadAvailableStoreItems(EInfo.Owner.PKEntities.Entities);
+                }
+                else if (EntityInfo.IsTower == false)
+                {
+                    this.gameObject.SetActive(false);
                 }
             }
             else

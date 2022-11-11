@@ -54,6 +54,8 @@ public class EntityBase : Entity
     [field: SerializeField] public bool IsGeneratingIncome { get; set; }
     [field: SerializeField] public bool UnitCurrentlySpawning { get; set; }
     [field: SerializeField] public List<GameObject> CurrentWaveEnemies { get; set; }
+
+    [field: SerializeField] public float WaveTimerMinCooldown { get; set; } = 15;
     private void Awake()
     {
         Debug.Log("Entity Ship: " + EntityName + " Spawned");
@@ -148,18 +150,26 @@ public class EntityBase : Entity
             foreach(WaveData waveData in levelHandler.EnemyBaseWavesData.WaveList)
             {
                 if(waveData.WaveNumber == levelHandler.CurrentWaveNumber)
-                { 
-                    if(waveData.Entity)
+                {
+                    Debug.Log("Entity Attempt" + waveData.Entity.name);
+                    if (waveData.Entity)
                     {
-                        //Debug.Log("Entity Attempt" + waveData.Entity.name);
                         GenerateUnits(waveData.NumberToSpawn, waveData.Entity, waveData.SpawnDelay);
+                        StartCoroutine(WaveWaitCooldown(WaveTimerMinCooldown + (waveData.SpawnDelay * waveData.NumberToSpawn)));
                     }
                     
                 }
             }
         }
     }
-
+    IEnumerator WaveWaitCooldown(float Delay)
+    {
+        yield return new WaitForSeconds(Delay);
+        if(levelHandler.IsWaveLevel && levelHandler.CurrentWaveNumber <= levelHandler.LastWaveNumber)
+        {
+            levelHandler.StartNextWave();
+        }
+    }
     void GenerateUnits(int Amount, GameObject Unit, float Delay)
     {
 
@@ -169,7 +179,6 @@ public class EntityBase : Entity
             {
                 StartCoroutine(CreateWave(Amount, Unit, Delay));
             }
-
         }
     }
 
