@@ -49,7 +49,17 @@ public class RealPlayer : Player
     // Update is called once per frame
     void Update()
     {
-        if(PlayerBase == null)
+        for(int i = NewObjects.Count; i > 9;  i--)
+        {
+            if (NewObjects[i] == null) ;
+            NewObjects.Remove(NewObjects[i]);
+        }
+        for (int i = NewObjects.Count; i > 9; i--)
+        {
+            if (OldObjects[i] == null) ;
+            OldObjects.Remove(OldObjects[i]);
+        }
+        if (PlayerBase == null)
         { WaveEvent.InvokeGameEnd(this, false);}
 
         if(IsMainPlayer)
