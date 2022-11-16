@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 890b82be1ab2ce44fa0c66ee134940df, type: 3}
+  m_Name: Level6Data
+  m_EditorClassIdentifier: 
+  <WaveList>k__BackingField:
+  - <WaveNumber>k__BackingField: 1
+    <NumberToSpawn>k__BackingField: 25
+    <SpawnDelay>k__BackingField: 0.05
+    <Entity>k__BackingField: {fileID: 5486308427337786528, guid: b25dd4438a86c22499c014ad085c724c, type: 3}
+  - <WaveNumber>k__BackingField: 2
+    <NumberToSpawn>k__BackingField: 30
+    <SpawnDelay>k__BackingField: 0.05
+    <Entity>k__BackingField: {fileID: 5486308427337786528, guid: b25dd4438a86c22499c014ad085c724c, type: 3}
+  - <WaveNumber>k__BackingField: 3
+    <NumberToSpawn>k__BackingField: 35
+    <SpawnDelay>k__BackingField: 0.05
+    <Entity>k__BackingField: {fileID: 5486308427337786528, guid: b25dd4438a86c22499c014ad085c724c, type: 3}
+  - <WaveNumber>k__BackingField: 4
+    <NumberToSpawn>k__BackingField: 25
+    <SpawnDelay>k__BackingField: 0.05
+    <Entity>k__BackingField: {fileID: 8786037586266340501, guid: 5f1ec6eeb957e2e46b9546edf6796ede, type: 3}
+  - <WaveNumber>k__BackingField: 5
+    <NumberToSpawn>k__BackingField: 30
+    <SpawnDelay>k__BackingField: 0.05
+    <Entity>k__BackingField: {fileID: 8786037586266340501, guid: 5f1ec6eeb957e2e46b9546edf6796ede, type: 3}
+  - <WaveNumber>k__BackingField: 6
+    <NumberToSpawn>k__BackingField: 35
+    <SpawnDelay>k__BackingField: 0.05
+    <Entity>k__BackingField: {fileID: 8786037586266340501, guid: 5f1ec6eeb957e2e46b9546edf6796ede, type: 3}
+  - <WaveNumber>k__BackingField: 0
+    <NumberToSpawn>k__BackingField: 25
+    <SpawnDelay>k__BackingField: 0.05
+    <Entity>k__BackingField: {fileID: 8786037586266340501, guid: ee8971eca568bf44e8d648082f23a470, type: 3}
+  - <WaveNumber>k__BackingField: 7
+    <NumberToSpawn>k__BackingField: 30
+    <SpawnDelay>k__BackingField: 0.05
+    <Entity>k__BackingField: {fileID: 8786037586266340501, guid: ee8971eca568bf44e8d648082f23a470, type: 3}
+  - <WaveNumber>k__BackingField: 8
+    <NumberToSpawn>k__BackingField: 35
+    <SpawnDelay>k__BackingField: 0.05
+    <Entity>k__BackingField: {fileID: 8786037586266340501, guid: ee8971eca568bf44e8d648082f23a470, type: 3}
+  - <WaveNumber>k__BackingField: 9
+    <NumberToSpawn>k__BackingField: 25
+    <SpawnDelay>k__BackingField: 0.05
+    <Entity>k__BackingField: {fileID: 1046364777461913026, guid: 8a717e20d50ac27428847ebe529a33bc, type: 3}
+  - <WaveNumber>k__BackingField: 10
+    <NumberToSpawn>k__BackingField: 25
+    <SpawnDelay>k__BackingField: 0.05
+    <Entity>k__BackingField: {fileID: 5486308427337786528, guid: 722eec0d05d00ba4ebad0f8a3cf43da4, type: 3}
+  - <WaveNumber>k__BackingField: 11
+    <NumberToSpawn>k__BackingField: 30
+    <SpawnDelay>k__BackingField: 0
+    <Entity>k__BackingField: {fileID: 5486308427337786528, guid: 722eec0d05d00ba4ebad0f8a3cf43da4, type: 3}
+  - <WaveNumber>k__BackingField: 12
+    <NumberToSpawn>k__BackingField: 32
+    <SpawnDelay>k__BackingField: 0
+    <Entity>k__BackingField: {fileID: 5486308427337786528, guid: 722eec0d05d00ba4ebad0f8a3cf43da4, type: 3}

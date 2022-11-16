@@ -1,6 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+
+/// 
+//C292 Main Project - Nebula Guards Partial Code from How to: Dynamic Scroll View in Unity used in UI Development : https://www.youtube.com/watch?v=Q-G-W93jhYc
+//
 public class DynamicScrollView : MonoBehaviour
 {
     [SerializeField] private Transform scrollViewContent;

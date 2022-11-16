@@ -300,7 +300,10 @@ public class AI_Default : EntityAI
         if (thisEntity.Parent.TryGetComponent<EntityAI>(out EntityAI ParentAi))
         {
             if (ParentAi.Target)
-            { this.Target = ParentAi.Target; }
+            {
+                this.ObjectiveTarget = ParentAi.Target;
+                this.Target = ParentAi.Target; 
+            }
         }
     }
 

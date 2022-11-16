@@ -2595,6 +2595,22 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Level 2
       m_Image: {fileID: 0}
+    - m_Text: Level 3
+      m_Image: {fileID: 0}
+    - m_Text: Level 4
+      m_Image: {fileID: 0}
+    - m_Text: Level 5
+      m_Image: {fileID: 0}
+    - m_Text: Level 6
+      m_Image: {fileID: 0}
+    - m_Text: Level 7
+      m_Image: {fileID: 0}
+    - m_Text: Level 8
+      m_Image: {fileID: 0}
+    - m_Text: Level 9
+      m_Image: {fileID: 0}
+    - m_Text: Level 10
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4304,7 +4320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dropdownlist: {fileID: 1314988056}
-  Scenes: 00000000010000000200000003000000040000000500000006000000
+  Scenes: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
 --- !u!223 &2674631253023602068
 Canvas:
   m_ObjectHideFlags: 0

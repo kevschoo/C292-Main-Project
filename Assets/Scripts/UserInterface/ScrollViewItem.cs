@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+//
+//C292 Main Project - Nebula Guards Partial Code from How to: Dynamic Scroll View in Unity used in UI Development : https://www.youtube.com/watch?v=Q-G-W93jhYc
+//
 public class ScrollViewItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image childImage;
